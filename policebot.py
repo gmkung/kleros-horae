@@ -99,7 +99,7 @@ def handle_event(event):
     try:
         itemID = event["args"]["_itemID"].hex()
         data = event["args"]["_data"]
-        print("itemID: " + itemID)
+        print(event["args"]["_itemID"])
         print("data: " + data)
     except Exception as e:
         print(f"Error in parsing event data: {e}")
@@ -149,7 +149,7 @@ def handle_event(event):
 
     # Analyze with OpenAI
     OpenAI_response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo", messages=[{"role": "user", "content": OpenAI_prompt}]
+        model="gpt-4", messages=[{"role": "user", "content": OpenAI_prompt}]
     )
 
     print(OpenAI_response["choices"][0]["message"]["content"])
@@ -166,29 +166,30 @@ def handle_event(event):
 
     # Submit evidence to the contract
 
-    formatted_itemID = Web3.to_bytes(text=itemID).ljust(32, b"\0")
-    print(formatted_itemID)
-    transaction = contract.functions.submitEvidence(
+    # Get the transaction data
+    transaction_data = contract.functions.submitEvidence(
         event["args"]["_itemID"], evidenceIpfsUri
-    ).transact(
+    ).build_transaction(
         {
-            "chainId": 100,  # Gnosis chain
             "gas": 2000000,
-            "gasPrice": int(20 * 1e9),  # to gwei
             "nonce": w3.eth.get_transaction_count(w3.eth.defaultAccount),
         }
     )
-    try:
-        # Sign the transaction
-        signed_txn = w3.eth.account.signTransaction(
-            transaction, os.environ.get("ETH_bot_private_key", "default_value")
-        )
+    # Sign the transaction
+    signed_txn = w3.eth.account.sign_transaction(
+        transaction_data, os.environ.get("ETH_bot_private_key", "default_value")
+    )
 
-        # Send the transaction
-        transaction_hash = w3.eth.sendRawTransaction(signed_txn.rawTransaction)
-    except Exception(e):
-        print(e)
-    print("Evidence submitted!: " + transaction_hash.hex())
+    try:
+        # Send transaction
+        txn_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+
+        # Wait for transaction to be mined
+        txn_receipt = w3.eth.wait_for_transaction_receipt(txn_hash)
+        print("Evidence submitted successfully! ")
+        print(txn_receipt)
+    except Exception as e:
+        print("Error submitting transaction: " + e)
 
 
 # Create a new event filter
