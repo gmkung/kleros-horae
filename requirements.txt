@@ -5,3 +5,4 @@ openai==0.27.0  # For OpenAI API interactions
 urllib3==2.0.5
 chardet==5.1.0
 charset_normalizer== 3.1.0
+requests==2.30.0
