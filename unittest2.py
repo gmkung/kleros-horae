@@ -7,6 +7,7 @@ openai.api_key = "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"
 OpenAI_response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[
+        {"role": "system", "content": "You always reply in chinese."},
         {
             "role": "user",
             "content": "Tell me if you are a beautiful assistant and what Kleros does.",

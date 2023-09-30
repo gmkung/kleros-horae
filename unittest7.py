@@ -1,7 +1,9 @@
-from perplexityai.Perplexity import Perplexity
+from perplexity import Perplexity
+import json
 
 perplexity = Perplexity()
-answer = perplexity.search("What is the meaning of life?")
-for a in answer:
-    print(a)
+answer = perplexity.search_sync("What is the meanifffng of life?")
+
+print(answer["answer"])
+
 perplexity.close()

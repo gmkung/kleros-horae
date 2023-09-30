@@ -10,8 +10,6 @@ from perplexity import Perplexity
 import random
 
 
-perplexity = Perplexity()
-
 openai.api_key = os.environ.get("OpenAI_API_Key", "default_value")
 
 
@@ -24,7 +22,7 @@ w3 = Web3(
 w3.eth.defaultAccount = "0x814D43C478EEE41884279afde0836D957fe63254"
 
 # Initialize contract
-contract_address = "0xa64E8949Ad24259526a32d4BfD53A9f2154ae6bB"
+contract_address = "0x66260C69d03837016d88c9877e61e08Ef74C59F2"  # 0xa64E8949Ad24259526a32d4BfD53A9f2154ae6bB is the test registry
 
 # loading ABI
 with open("./ABI/lcurate_abi.json", "r") as f:
@@ -116,14 +114,13 @@ def handle_event(event):
 
     # Analyze with Perplexity.AI
     try:
-        response = perplexity.search(
+        perplexity = Perplexity()
+        response = perplexity.search_sync(  # search_sync returns the final dict while search returns a generator that streams in results
             "What is this ethereum address? "
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
-            + "? Tell us what you can find about the project/team that it's linked to, the usage and function of the contract and the chain that it's on"
+            + "? Tell us what you can find about the project/team that it's linked to, the usage and function of the contract and the chain that it's deployed on"
         )
-        perplexity_text_results = next(response)[
-            "answer"
-        ]  # 'response' is a python generator, and I'm using next to read the first one.
+        perplexity_text_results = response["answer"]  # 'response'
         print(json.dumps(perplexity_text_results))
         perplexity.close()
     except Exception as e:
@@ -141,7 +138,7 @@ def handle_event(event):
             + "The information found independently from the internet about this contract: \n```"
             + perplexity_text_results
             + "```\n"
-            + "Taking both the acceptance policy and the information online into account, is the entry acceptance for the registry? Give your advice sounding like a bureaucratic lawyer, making sure that the information submitted also makes sense intrinsically ending. End off your response using ACCEPT, REJECT or INCONCLUSIVE, and say something spicy at the end to spur participation in the discussion."
+            + "Taking into account both the acceptance policy and the information found online, do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically ending and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
         )
         print(OpenAI_prompt)
     except Exception as e:
@@ -149,13 +146,26 @@ def handle_event(event):
 
     # Analyze with OpenAI
     OpenAI_response = openai.ChatCompletion.create(
-        model="gpt-4", messages=[{"role": "user", "content": OpenAI_prompt}]
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a lawyer in the Kleros ecosystem, who only confirms and convicts when you are absolutely certain. You are clear and concise in your communication and likes to invite others to comment on your words.",
+            },
+            {"role": "user", "content": OpenAI_prompt},
+        ],
     )
 
     print(OpenAI_response["choices"][0]["message"]["content"])
 
     # Saving the evidence to Kleros's IPFS node
-    deityName = random.choice(["Eunomia", "Dikē", "Eirene"])
+    deityName = random.choice(
+        [
+            "Eunomia, AI goddess of good order",
+            "Dikē, AI goddess of fair judgements",
+            "Eirene, AI goddess of peace",
+        ]
+    )
     expression = f"Opinion by {deityName}"
     evidence_object = {
         "title": expression,
@@ -209,7 +219,7 @@ while True:
         for event in new_entries:
             print(f"Handling event: {event}")
             handle_event(event)
-        time.sleep(5)
+        time.sleep(300)
 
     except Exception as e:
         print(f"Error in loop: {e}")
