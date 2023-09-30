@@ -2,3 +2,6 @@ web3==6.10.0  # For Ethereum-related functionality
 requests==2.26.0  # For HTTP requests
 pdfplumber==0.5.28  # For PDF parsing
 openai==0.27.0  # For OpenAI API interactions
+urllib3==2.0.5
+chardet==5.1.0
+charset_normalizer== 3.1.0
