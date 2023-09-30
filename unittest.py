@@ -24,3 +24,6 @@ arbitrator_address = contract.functions.arbitrator().call()
 
 # Print the result
 print(f"The arbitrator address is: {arbitrator_address}")
+
+
+

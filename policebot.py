@@ -6,7 +6,7 @@ from io import BytesIO
 import time
 import os
 import openai
-from perplexityai.Perplexity import Perplexity
+from perplexity import Perplexity
 import random
 
 
@@ -116,12 +116,15 @@ def handle_event(event):
 
     # Analyze with Perplexity.AI
     try:
-        answer = perplexity.search(
+        response = perplexity.search(
             "What is this ethereum address? "
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
             + "? Tell us what you can find about the project/team that it's linked to, the usage and function of the contract and the chain that it's on"
         )
-        perplexity_text_results = answer.json_answer_text["answer"]
+        perplexity_text_results = next(response)[
+            "answer"
+        ]  # 'response' is a python generator, and I'm using next to read the first one.
+        print(json.dumps(perplexity_text_results))
         perplexity.close()
     except Exception as e:
         print(f"Error searching in perplexity: {e}")
