@@ -162,34 +162,38 @@ def handle_event(event):
     print(evidenceIpfsUri)
 
     # Submit evidence to the contract
+
+    formatted_itemID = Web3.to_bytes(text=itemID).ljust(32, b"\0")
+    print(formatted_itemID)
     transaction = contract.functions.submitEvidence(
-        itemID, evidenceIpfsUri
-    ).buildTransaction(
+        event["args"]["_itemID"], evidenceIpfsUri
+    ).transact(
         {
             "chainId": 100,  # Gnosis chain
             "gas": 2000000,
-            "gasPrice": w3.toWei("20", "gwei"),
-            "nonce": w3.eth.getTransactionCount(w3.eth.defaultAccount),
+            "gasPrice": int(20 * 1e9),  # to gwei
+            "nonce": w3.eth.get_transaction_count(w3.eth.defaultAccount),
         }
     )
+    try:
+        # Sign the transaction
+        signed_txn = w3.eth.account.signTransaction(
+            transaction, os.environ.get("ETH_bot_private_key", "default_value")
+        )
 
-    # Sign the transaction
-    signed_txn = w3.eth.account.signTransaction(
-        transaction, os.environ.get("ETH_bot_private_key", "default_value")
-    )
-
-    # Send the transaction
-    transaction_hash = w3.eth.sendRawTransaction(signed_txn.rawTransaction)
-
+        # Send the transaction
+        transaction_hash = w3.eth.sendRawTransaction(signed_txn.rawTransaction)
+    except Exception(e):
+        print(e)
     print("Evidence submitted!: " + transaction_hash.hex())
 
 
 # Create a new event filter
 try:
-    new_item_filter = contract.events.NewItem.createFilter(fromBlock="latest")
+    new_item_filter = contract.events.NewItem.create_filter(fromBlock="latest")
 except Exception as e:
     print(f"Error creating filter: {e}")
-    new_item_filter = contract.events.NewItem.createFilter(fromBlock="latest")
+    new_item_filter = contract.events.NewItem.create_filter(fromBlock="latest")
 
 # Main loop to listen for events
 while True:
@@ -197,7 +201,6 @@ while True:
         print("Looping")
 
         new_entries = new_item_filter.get_new_entries()
-        print(f"New entries: {new_entries}")
 
         for event in new_entries:
             print(f"Handling event: {event}")
