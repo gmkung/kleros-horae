@@ -7,13 +7,10 @@ from random import getrandbits
 from websocket import WebSocketApp
 from requests import Session, get, post
 
-
 class Perplexity:
     def __init__(self, email: str = None) -> None:
         self.session: Session = Session()
-        self.user_agent: dict = {
-            "User-Agent": "Ask/2.2.1/334 (iOS; iPhone) isiOSOnMac/false"
-        }
+        self.user_agent: dict = { "User-Agent": "Ask/2.2.1/334 (iOS; iPhone) isiOSOnMac/false" }
         self.session.headers.update(self.user_agent)
 
         if email and ".perplexity_session" in listdir():
@@ -27,7 +24,7 @@ class Perplexity:
         self.email: str = email
         self.t: str = self._get_t()
         self.sid: str = self._get_sid()
-
+    
         self.n: int = 1
         self.queue: list = []
         self.finished: bool = True
@@ -51,11 +48,9 @@ class Perplexity:
             self.session.cookies.update(perplexity_session[email])
         else:
             self._login(email, perplexity_session)
-
+    
     def _login(self, email: str, ps: dict = None) -> None:
-        self.session.post(
-            url="https://www.perplexity.ai/api/auth/signin-email", data={"email": email}
-        )
+        self.session.post(url="https://www.perplexity.ai/api/auth/signin-email", data={"email": email})
 
         email_link: str = str(input("paste the link you received by email: "))
         self.session.get(email_link)
@@ -71,7 +66,7 @@ class Perplexity:
     def _init_session_without_login(self) -> None:
         self.session.get(url=f"https://www.perplexity.ai/search/{str(uuid4())}")
         self.session.headers.update(self.user_agent)
-
+    
     def _auth_session(self) -> None:
         self.session.get(url="https://www.perplexity.ai/api/auth/session")
 
@@ -79,16 +74,14 @@ class Perplexity:
         return format(getrandbits(32), "08x")
 
     def _get_sid(self) -> str:
-        return loads(
-            self.session.get(
-                url=f"https://www.perplexity.ai/socket.io/?EIO=4&transport=polling&t={self.t}"
-            ).text[1:]
-        )["sid"]
+        return loads(self.session.get(
+            url=f"https://www.perplexity.ai/socket.io/?EIO=4&transport=polling&t={self.t}"
+        ).text[1:])["sid"]
 
     def _ask_anonymous_user(self) -> bool:
         response = self.session.post(
             url=f"https://www.perplexity.ai/socket.io/?EIO=4&transport=polling&t={self.t}&sid={self.sid}",
-            data='40{"jwt":"anonymous-ask-user"}',
+            data="40{\"jwt\":\"anonymous-ask-user\"}"
         ).text
 
         return response == "OK"
@@ -98,7 +91,7 @@ class Perplexity:
         for key, value in self.session.cookies.get_dict().items():
             cookies += f"{key}={value}; "
         return cookies[:-2]
-
+    
     def _write_file_url(self, filename: str, file_url: str) -> None:
         if ".perplexity_files_url" in listdir():
             with open(".perplexity_files_url", "r") as f:
@@ -121,13 +114,11 @@ class Perplexity:
                 ws.send("3")
             elif not self.finished:
                 if message.startswith("42"):
-                    message: list = loads(message[2:])
+                    message : list = loads(message[2:])
                     content: dict = message[1]
                     content.update(loads(content["text"]))
                     content.pop("text")
-                    if (not ("final" in content and content["final"])) or (
-                        "status" in content and content["status"] == "completed"
-                    ):
+                    if (not ("final" in content and content["final"])) or ("status" in content and content["status"] == "completed"):
                         self.queue.append(content)
                     if message[0] == "query_answered":
                         self.finished = True
@@ -142,59 +133,35 @@ class Perplexity:
             cookie=self._get_cookies_str(),
             on_open=on_open,
             on_message=on_message,
-            on_error=lambda ws, err: print(f"websocket error: {err}"),
+            on_error=lambda ws, err: print(f"websocket error: {err}")
         )
-
-    def _s(
-        self,
-        query: str,
-        mode: str = "concise",
-        search_focus: str = "internet",
-        attachments: list[str] = [],
-        language: str = "en-GB",
-    ) -> dict:
+    
+    def _s(self, query: str, mode: str = "concise", search_focus: str = "internet", attachments: list[str] = [], language: str = "en-GB") -> dict:
         assert self.finished, "already searching"
         assert mode in ["concise", "copilot"], "invalid mode"
         assert len(attachments) <= 4, "too many attachments: max 4"
-        assert search_focus in [
-            "internet",
-            "scholar",
-            "writing",
-            "wolfram",
-            "youtube",
-            "reddit",
-        ], "invalid search focus"
+        assert search_focus in ["internet", "scholar", "writing", "wolfram", "youtube", "reddit"], "invalid search focus"
         self.finished = False
         self.n += 1
-        ws_message: str = f"{420 + self.n}" + dumps(
-            [
-                "perplexity_ask",
-                query,
-                {
-                    "version": "2.1",
-                    "source": "default",  # "ios"
-                    "frontend_session_id": self.frontend_session_id,
-                    "language": language,
-                    "timezone": "CET",
-                    "attachments": attachments,
-                    "search_focus": search_focus,
-                    "frontend_uuid": self.frontend_uuid,
-                    "mode": mode,
-                    # "use_inhouse_model": True
-                },
-            ]
-        )
+        ws_message: str = f"{420 + self.n}" + dumps([
+            "perplexity_ask",
+            query,
+            {
+                "version": "2.1",
+                "source": "default", # "ios"
+                "frontend_session_id": self.frontend_session_id,
+                "language": language,
+                "timezone": "CET",
+                "attachments": attachments,
+                "search_focus": search_focus,
+                "frontend_uuid": self.frontend_uuid,
+                "mode": mode,
+                # "use_inhouse_model": True
+            }
+        ])
         self.ws.send(ws_message)
 
-    def search(
-        self,
-        query: str,
-        mode: str = "concise",
-        search_focus: str = "internet",
-        attachments: list[str] = [],
-        language: str = "en-GB",
-        timeout: float = None,
-    ) -> dict:
+    def search(self, query: str, mode: str = "concise", search_focus: str = "internet", attachments: list[str] = [], language: str = "en-GB", timeout: float = None) -> dict:
         self._s(query, mode, search_focus, attachments, language)
 
         start_time: float = time()
@@ -205,15 +172,7 @@ class Perplexity:
             if len(self.queue) != 0:
                 yield self.queue.pop(0)
 
-    def search_sync(
-        self,
-        query: str,
-        mode: str = "concise",
-        search_focus: str = "internet",
-        attachments: list[str] = [],
-        language: str = "en-GB",
-        timeout: float = None,
-    ) -> dict:
+    def search_sync(self, query: str, mode: str = "concise", search_focus: str = "internet", attachments: list[str] = [], language: str = "en-GB", timeout: float = None) -> dict:
         self._s(query, mode, search_focus, attachments, language)
 
         start_time: float = time()
@@ -221,7 +180,7 @@ class Perplexity:
             if timeout and time() - start_time > timeout:
                 self.finished = True
                 return {"error": "timeout"}
-
+        
         return self.queue.pop(-1)
 
     def upload(self, filename: str) -> str:
@@ -236,18 +195,14 @@ class Perplexity:
 
         self.finished = False
         self.n += 1
-        ws_message: str = f"{420 + self.n}" + dumps(
-            [
-                "get_upload_url",
-                {
-                    "version": "2.1",
-                    "source": "default",
-                    "content_type": "text/plain"
-                    if filename.split(".")[-1] == "txt"
-                    else "application/pdf",
-                },
-            ]
-        )
+        ws_message: str = f"{420 + self.n}" + dumps([
+            "get_upload_url",
+            {
+                "version": "2.1",
+                "source": "default",
+                "content_type": "text/plain" if filename.split(".")[-1] == "txt" else "application/pdf",
+            }
+        ])
 
         self.ws.send(ws_message)
 
@@ -256,7 +211,7 @@ class Perplexity:
                 upload_data = self.queue.pop(0)
 
         assert not upload_data["rate_limited"], "rate limited"
-
+        
         post(
             url=upload_data["url"],
             files={
@@ -264,48 +219,39 @@ class Perplexity:
                 "Content-Type": (None, upload_data["fields"]["Content-Type"]),
                 "key": (None, upload_data["fields"]["key"]),
                 "AWSAccessKeyId": (None, upload_data["fields"]["AWSAccessKeyId"]),
-                "x-amz-security-token": (
-                    None,
-                    upload_data["fields"]["x-amz-security-token"],
-                ),
+                "x-amz-security-token": (None, upload_data["fields"]["x-amz-security-token"]),
                 "policy": (None, upload_data["fields"]["policy"]),
                 "signature": (None, upload_data["fields"]["signature"]),
-                "file": (filename, file),
-            },
+                "file": (filename, file)
+            }
         )
 
-        file_url: str = (
-            upload_data["url"] + upload_data["fields"]["key"].split("$")[0] + filename
-        )
+        file_url: str = upload_data["url"] + upload_data["fields"]["key"].split("$")[0] + filename
 
         self._write_file_url(filename, file_url)
 
         return file_url
-
+    
     def threads(self, query: str = None, limit: int = None) -> list[dict]:
         assert self.finished, "already searching"
 
-        if not limit:
-            limit = 20
-        data: dict = {
-            "version": "2.1",
-            "source": "default",
-            "limit": limit,
-            "offset": 0,
-        }
-        if query:
-            data["search_term"] = query
+        if not limit: limit = 20
+        data: dict = {"version": "2.1", "source": "default", "limit": limit, "offset": 0}
+        if query: data["search_term"] = query
 
         self.finished = False
         self.n += 1
-        ws_message: str = f"{420 + self.n}" + dumps(["list_ask_threads", data])
+        ws_message: str = f"{420 + self.n}" + dumps([
+            "list_ask_threads",
+            data
+        ])
 
         self.ws.send(ws_message)
 
         while not self.finished or len(self.queue) != 0:
             if len(self.queue) != 0:
                 return self.queue.pop(0)
-
+    
     def close(self) -> None:
         self.ws.close()
 
