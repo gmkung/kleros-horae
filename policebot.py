@@ -96,7 +96,7 @@ def postJSONtoKlerosIPFS(object):
 def handle_event(_itemID, data):
     try:
         # data = event["args"]["_data"]
-        print(_itemID)
+        print("itemID: " + str(_itemID))
         print("data: " + data)
     except Exception as e:
         print(f"Error in parsing event data: {e}")
@@ -115,7 +115,7 @@ def handle_event(_itemID, data):
     try:
         perplexity = Perplexity()
         response = perplexity.search_sync(  # search_sync returns the final dict while search returns a generator that streams in results
-            "Tell me what the contract at this address is for? "
+            "Do a thorough search online and tell me what the contract at this address is for?"
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
         )
         perplexity_text_results = response["answer"]  # 'response'
