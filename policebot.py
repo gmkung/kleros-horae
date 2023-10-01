@@ -119,7 +119,7 @@ def handle_event(_itemID, data):
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
         )
         perplexity_text_results = response["answer"]  # 'response'
-        print(json.dumps(response))
+
         perplexity.close()
     except Exception as e:
         print(f"Error searching in perplexity: {e}")

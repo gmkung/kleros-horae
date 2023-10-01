@@ -8,6 +8,4 @@ answer = perplexity.search_sync(
 
 print(answer["answer"])
 
-print(json.dumps(answer))
-
 perplexity.close()
