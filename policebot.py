@@ -22,7 +22,7 @@ w3 = Web3(
 w3.eth.defaultAccount = "0x814D43C478EEE41884279afde0836D957fe63254"
 
 # Initialize contract
-contract_address = "0x66260C69d03837016d88c9877e61e08Ef74C59F2"  # 0xa64E8949Ad24259526a32d4BfD53A9f2154ae6bB is the test registry
+contract_address = "0x66260C69d03837016d88c9877e61e08Ef74C59F2"  # 0xa64E8949Ad24259526a32d4BfD53A9f2154ae6bB is the test registry # real: 0x66260C69d03837016d88c9877e61e08Ef74C59F2
 
 # loading ABI
 with open("./ABI/lcurate_abi.json", "r") as f:
@@ -93,11 +93,10 @@ def postJSONtoKlerosIPFS(object):
 
 
 # Function to handle new item events
-def handle_event(event):
+def handle_event(_itemID, data):
     try:
-        itemID = event["args"]["_itemID"].hex()
-        data = event["args"]["_data"]
-        print(event["args"]["_itemID"])
+        # data = event["args"]["_data"]
+        print(_itemID)
         print("data: " + data)
     except Exception as e:
         print(f"Error in parsing event data: {e}")
@@ -116,12 +115,11 @@ def handle_event(event):
     try:
         perplexity = Perplexity()
         response = perplexity.search_sync(  # search_sync returns the final dict while search returns a generator that streams in results
-            "What is this ethereum address? "
+            "Tell me what the contract at this address is for? "
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
-            + "? Tell us what you can find about the project/team that it's linked to, the usage and function of the contract and the chain that it's deployed on"
         )
         perplexity_text_results = response["answer"]  # 'response'
-        print(json.dumps(perplexity_text_results))
+        print(json.dumps(response))
         perplexity.close()
     except Exception as e:
         print(f"Error searching in perplexity: {e}")
@@ -178,7 +176,7 @@ def handle_event(event):
 
     # Get the transaction data
     transaction_data = contract.functions.submitEvidence(
-        event["args"]["_itemID"], evidenceIpfsUri
+        _itemID, evidenceIpfsUri
     ).build_transaction(
         {
             "gas": 2000000,
@@ -200,26 +198,3 @@ def handle_event(event):
         print(txn_receipt)
     except Exception as e:
         print("Error submitting transaction: " + e)
-
-
-# Create a new event filter
-try:
-    new_item_filter = contract.events.NewItem.create_filter(fromBlock="latest")
-except Exception as e:
-    print(f"Error creating filter: {e}")
-    new_item_filter = contract.events.NewItem.create_filter(fromBlock="latest")
-
-# Main loop to listen for events
-while True:
-    try:
-        print("Looping")
-
-        new_entries = new_item_filter.get_new_entries()
-
-        for event in new_entries:
-            print(f"Handling event: {event}")
-            handle_event(event)
-        time.sleep(300)
-
-    except Exception as e:
-        print(f"Error in loop: {e}")

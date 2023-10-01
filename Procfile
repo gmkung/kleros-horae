@@ -1,1 +1,1 @@
-worker: python3 policebot.py
+worker: python3 policepatrol.py
