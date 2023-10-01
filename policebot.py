@@ -136,7 +136,7 @@ def handle_event(_itemID, data):
             + "The information found independently from the internet about this contract: \n```"
             + perplexity_text_results
             + "```\n"
-            + "Taking into account both the acceptance policy and the information found online, do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically ending and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
+            + "Taking into account both the acceptance policy and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically ending and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
         )
         print(OpenAI_prompt)
     except Exception as e:

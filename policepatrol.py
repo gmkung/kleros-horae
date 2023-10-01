@@ -36,7 +36,7 @@ while True:
         for event in new_entries:
             print(f"Handling event: {event}")
             handle_event(event["args"]["_itemID"], event["args"]["_data"])
-        time.sleep(5)
+        time.sleep(300)
 
     except Exception as e:
         print(f"Error in loop: {e}")
