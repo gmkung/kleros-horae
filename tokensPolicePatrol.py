@@ -12,7 +12,7 @@ w3 = Web3(
 w3.eth.defaultAccount = "0x814D43C478EEE41884279afde0836D957fe63254"
 
 # Initialize contract
-contract_address = "0x66260C69d03837016d88c9877e61e08Ef74C59F2"  # 0xa64E8949Ad24259526a32d4BfD53A9f2154ae6bB is the test registry # real: 0x66260C69d03837016d88c9877e61e08Ef74C59F2
+contract_address = "0xeE1502e29795Ef6C2D60F8D7120596abE3baD990"  # 0xa64E8949Ad24259526a32d4BfD53A9f2154ae6bB is the test registry # real: 0xeE1502e29795Ef6C2D60F8D7120596abE3baD990
 
 # loading ABI
 with open("./ABI/lcurate_abi.json", "r") as f:
@@ -30,12 +30,12 @@ except Exception as e:
 # Main loop to listen for events
 while True:
     try:
-        print("Looping")
+        print("Looping Tokens police")
         new_entries = new_item_filter.get_new_entries()
 
         for event in new_entries:
             print(f"Handling event: {event}")
-            handle_event(event["args"]["_itemID"], event["args"]["_data"])
+            handle_event(event["args"]["_itemID"], event["args"]["_data"],'Tokens')
         time.sleep(5)
 
     except Exception as e:

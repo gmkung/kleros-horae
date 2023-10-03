@@ -3,11 +3,11 @@ import requests
 import pdfplumber
 import json
 from io import BytesIO
-import time
 import os
 import openai
 from perplexity import Perplexity
 import random
+from PIL import Image
 
 
 openai.api_key = os.environ.get("OpenAI_API_Key", "default_value")
@@ -92,14 +92,13 @@ def postJSONtoKlerosIPFS(object):
         )
 
 
-# Function to handle new item events
-def handle_event(_itemID, data):
-    try:
-        # data = event["args"]["_data"]
-        print("itemID: " + str(_itemID))
-        print("data: " + data)
-    except Exception as e:
-        print(f"Error in parsing event data: {e}")
+def retrieveLogo(ipfs_url):
+    response = requests.get(f"https://ipfs.kleros.io{ipfs_url}")
+
+    return response
+
+
+def createTagsPrompt(_itemID, data):
     try:
         # Fetch JSON from IPFS
         policyText = extractPDF("/ipfs/QmSaJWBFGGZ3FussTi6MqfXrMsaE75asumR2LLuAZFcrSf")
@@ -141,6 +140,90 @@ def handle_event(_itemID, data):
         print(OpenAI_prompt)
     except Exception as e:
         print(f"Error creating OpenAI query: {e}")
+
+    return OpenAI_prompt
+
+
+def createTokensPrompt(_itemID, data):
+    try:
+        # Fetch JSON from IPFS
+        policyText = extractPDF("/ipfs/Qmak6tHNB4q1Y2ihYde9bZqKaB2wy8mRZ53ChnpCSRfiXR")
+    except Exception as e:
+        print(f"Error fetching policy from IPFS: {e}")
+    # fetch itemID's data object
+    try:
+        curatedObject = fetch_json("https://ipfs.kleros.io" + data)
+    except Exception as e:
+        print(f"Error fetching curated IPFS object: {e}")
+
+    try:  # Fetch Logo from IPFS
+        logoFile = retrieveLogo(curatedObject["values"]["Logo"])
+        image = Image.open(BytesIO(logoFile.content))
+        logo_width, logo_height = image.size
+        logo_format = image.format.lower()
+
+    except Exception as e:
+        logo_width = "unknown"
+        logo_height = "unknown"
+        logo_format = "unknown"
+
+        print(f"Error fetching policy from IPFS: {e}")
+
+    # Analyze with Perplexity.AI
+    try:
+        perplexity = Perplexity()
+        response = perplexity.search_sync(  # search_sync returns the final dict while search returns a generator that streams in results
+            "Do a thorough search online and tell me what the contract at this address is for?"
+            + curatedObject["values"]["Address"].split(":")[-1].strip()
+        )  # using Address instead of 'Contract Address' due to different field name
+        perplexity_text_results = response["answer"]  # 'response'
+
+        perplexity.close()
+    except Exception as e:
+        print(f"Error searching in perplexity: {e}")
+    # do some parsing with this response
+
+    try:
+        OpenAI_prompt = (
+            "This is the acceptance policy for this registry: \n```"
+            + policyText
+            + "```\n"
+            + "Here is the information submitted about this supposed token contract: \n```"
+            + object_to_text_lines(curatedObject["values"])
+            + "```\n"
+            + "The information found independently from the internet about this supposed token contract: \n```"
+            + perplexity_text_results
+            + "```\n"
+            + "The format of the token's logo is "
+            + str(logo_width)
+            + " x "
+            + str(logo_height)
+            + " and the format is ."
+            + str(logo_format)
+            + "\n"
+            + "Taking into account both the acceptance policy, the image dimensions, and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically ending and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
+        )
+        print(OpenAI_prompt)
+    except Exception as e:
+        print(f"Error creating OpenAI query: {e}")
+
+    return OpenAI_prompt
+
+
+# Function to handle new item events
+def handle_event(_itemID, data, registryType):
+    try:
+        # data = event["args"]["_data"]
+        print("itemID: " + str(_itemID))
+        print("data: " + data)
+    except Exception as e:
+        print(f"Error in parsing event data: {e}")
+    if registryType == "Tags":
+        OpenAI_prompt = createTagsPrompt(_itemID, data)
+    elif registryType == "Tokens":
+        OpenAI_prompt = createTokensPrompt(_itemID, data)
+    else:
+        return
 
     # Analyze with OpenAI
     OpenAI_response = openai.ChatCompletion.create(
