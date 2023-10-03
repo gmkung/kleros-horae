@@ -21,15 +21,17 @@ w3 = Web3(
 )
 w3.eth.defaultAccount = "0x814D43C478EEE41884279afde0836D957fe63254"
 
-# Initialize contract
-contract_address = "0x66260C69d03837016d88c9877e61e08Ef74C59F2"  # 0xa64E8949Ad24259526a32d4BfD53A9f2154ae6bB is the test registry # real: 0x66260C69d03837016d88c9877e61e08Ef74C59F2
-
 # loading ABI
 with open("./ABI/lcurate_abi.json", "r") as f:
     contract_abi = json.load(f)
 
-contract = w3.eth.contract(address=contract_address, abi=contract_abi)
-
+# Initialize contracts
+tags_contract = w3.eth.contract(
+    address="0x66260C69d03837016d88c9877e61e08Ef74C59F2", abi=contract_abi
+)
+tokens_contract = w3.eth.contract(
+    address="0x70533554fe5c17CAf77fE530f77eAB933B92af60", abi=contract_abi
+)
 
 # Function to cache PDF
 def extractPDF(ipfs_url):
@@ -258,14 +260,27 @@ def handle_event(_itemID, data, registryType):
     # Submit evidence to the contract
 
     # Get the transaction data
-    transaction_data = contract.functions.submitEvidence(
-        _itemID, evidenceIpfsUri
-    ).build_transaction(
-        {
-            "gas": 2000000,
-            "nonce": w3.eth.get_transaction_count(w3.eth.defaultAccount),
-        }
-    )
+    if registryType == "Tags":
+        transaction_data = tags_contract.functions.submitEvidence(
+            _itemID, evidenceIpfsUri
+        ).build_transaction(
+            {
+                "gas": 2000000,
+                "nonce": w3.eth.get_transaction_count(w3.eth.defaultAccount),
+            }
+        )
+    elif registryType == "Tokens":
+        transaction_data = tokens_contract.functions.submitEvidence(
+            _itemID, evidenceIpfsUri
+        ).build_transaction(
+            {
+                "gas": 2000000,
+                "nonce": w3.eth.get_transaction_count(w3.eth.defaultAccount),
+            }
+        )
+    else:
+        return
+
     # Sign the transaction
     signed_txn = w3.eth.account.sign_transaction(
         transaction_data, os.environ.get("ETH_bot_private_key", "default_value")
