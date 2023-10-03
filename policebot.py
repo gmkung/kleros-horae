@@ -9,9 +9,7 @@ from perplexity import Perplexity
 import random
 from PIL import Image
 
-
 openai.api_key = os.environ.get("OpenAI_API_Key", "default_value")
-
 
 # Initialize Web3
 w3 = Web3(
@@ -32,6 +30,7 @@ tags_contract = w3.eth.contract(
 tokens_contract = w3.eth.contract(
     address="0x70533554fe5c17CAf77fE530f77eAB933B92af60", abi=contract_abi
 )
+
 
 # Function to cache PDF
 def extractPDF(ipfs_url):
