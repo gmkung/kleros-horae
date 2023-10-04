@@ -28,7 +28,7 @@ tags_contract = w3.eth.contract(
     address="0x66260C69d03837016d88c9877e61e08Ef74C59F2", abi=contract_abi
 )
 tokens_contract = w3.eth.contract(
-    address="0x70533554fe5c17CAf77fE530f77eAB933B92af60", abi=contract_abi
+    address="0xeE1502e29795Ef6C2D60F8D7120596abE3baD990", abi=contract_abi
 )
 
 
