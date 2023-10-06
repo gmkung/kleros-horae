@@ -23,44 +23,48 @@ with open("./ABI/lcurate_abi.json", "r") as f:
 tags_contract = w3.eth.contract(address=tags_contract_address, abi=contract_abi)
 tokens_contract = w3.eth.contract(address=tokens_contract_address, abi=contract_abi)
 
-# Create a new event filter for tags
-try:
-    tags_new_item_filter = tags_contract.events.NewItem.create_filter(
-        fromBlock="latest"
-    )
-except Exception as e:
-    print(f"Error creating filter: {e}")
 
-# Create a new event filter for tokens
-try:
-    tokens_new_item_filter = tokens_contract.events.NewItem.create_filter(
-        fromBlock="latest"
-    )
-except Exception as e:
-    print(f"Error creating filter: {e}")
-
-# Main loop to listen for events
 while True:
+    # Create a new event filter for tags
     try:
-        print("Looping Tags police patrol")
-        new_tags_entries = tags_new_item_filter.get_new_entries()
-
-        for event in new_tags_entries:
-            print(f"Handling event: {event}")
-            handle_event(event["args"]["_itemID"], event["args"]["_data"], "Tags")
-        time.sleep(5)
-
+        tags_new_item_filter = tags_contract.events.NewItem.create_filter(
+            fromBlock="latest"
+        )
     except Exception as e:
-        print(f"Error in loop: {e}")
+        print(f"Error creating tags filter: {e}")
 
+    # Create a new event filter for tokens
     try:
-        print("Looping Tokens police patrol")
-        new_token_entries = tokens_new_item_filter.get_new_entries()
-
-        for event in new_token_entries:
-            print(f"Handling event: {event}")
-            handle_event(event["args"]["_itemID"], event["args"]["_data"], "Tokens")
-        time.sleep(5)
-
+        tokens_new_item_filter = tokens_contract.events.NewItem.create_filter(
+            fromBlock="latest"
+        )
     except Exception as e:
-        print(f"Error in loop: {e}")
+        print(f"Error creating tokens filter: {e}")
+
+    # Main loop to listen for events
+    while True:
+        try:
+            print("Looping Tags police patrol")
+            new_tags_entries = tags_new_item_filter.get_new_entries()
+
+            for event in new_tags_entries:
+                print(f"Handling event: {event}")
+                handle_event(event["args"]["_itemID"], event["args"]["_data"], "Tags")
+            time.sleep(5)
+
+        except Exception as e:
+            print(f"Error in loop: {e}")
+
+        try:
+            print("Looping Tokens police patrol")
+            new_token_entries = tokens_new_item_filter.get_new_entries()
+
+            for event in new_token_entries:
+                print(f"Handling event: {event}")
+                handle_event(event["args"]["_itemID"], event["args"]["_data"], "Tokens")
+            time.sleep(5)
+
+        except Exception as e:
+            print(f"Error in loop: {e}")
+            if "Filter not found" in str(e):
+                break

@@ -27,6 +27,7 @@ with open("./ABI/lcurate_abi.json", "r") as f:
 tags_contract = w3.eth.contract(
     address="0x66260C69d03837016d88c9877e61e08Ef74C59F2", abi=contract_abi
 )
+
 tokens_contract = w3.eth.contract(
     address="0xeE1502e29795Ef6C2D60F8D7120596abE3baD990", abi=contract_abi
 )
@@ -97,6 +98,35 @@ def retrieveLogo(ipfs_url):
     response = requests.get(f"https://ipfs.kleros.io{ipfs_url}")
 
     return response
+
+
+def getSubgraphResults(caip10address, registry_address):
+    # Define the GraphQL query, inserting the key0 and registry_address
+    query = f"""
+    {{
+        litems(where:{{key0:"{caip10address.lower()}", registry:"{registry_address.lower()}", status_in:[Registered,ClearingRequested,RegistrationRequested]}}){{
+            itemID
+            key0
+            status
+        }}
+    }}
+    """
+
+    # Define the URL of the GraphQL endpoint
+    graphql_url = "https://api.thegraph.com/subgraphs/name/kleros/legacy-curate-xdai"
+
+    # Prepare the HTTP request
+    headers = {"Content-Type": "application/json"}
+    payload = {"query": query}
+
+    # Send the HTTP request
+    response = requests.post(graphql_url, headers=headers, json=payload)
+
+    # Check for a valid response
+    response.raise_for_status()
+
+    # Parse and return the JSON response
+    return response.json()
 
 
 def createTagsPrompt(_itemID, data):
