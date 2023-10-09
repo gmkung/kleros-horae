@@ -30,6 +30,7 @@ while True:
         tags_new_item_filter = tags_contract.events.NewItem.create_filter(
             fromBlock="latest"
         )
+        print("Created Tags events  filter")
     except Exception as e:
         print(f"Error creating tags filter: {e}")
 
@@ -38,6 +39,7 @@ while True:
         tokens_new_item_filter = tokens_contract.events.NewItem.create_filter(
             fromBlock="latest"
         )
+        print("Created Token events  filter")
     except Exception as e:
         print(f"Error creating tokens filter: {e}")
 

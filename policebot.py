@@ -23,14 +23,12 @@ w3.eth.defaultAccount = "0x814D43C478EEE41884279afde0836D957fe63254"
 with open("./ABI/lcurate_abi.json", "r") as f:
     contract_abi = json.load(f)
 
+tags_contract_address = "0x66260C69d03837016d88c9877e61e08Ef74C59F2"
+tokens_contract_address = "0xeE1502e29795Ef6C2D60F8D7120596abE3baD990"
 # Initialize contracts
-tags_contract = w3.eth.contract(
-    address="0x66260C69d03837016d88c9877e61e08Ef74C59F2", abi=contract_abi
-)
+tags_contract = w3.eth.contract(address=tags_contract_address, abi=contract_abi)
 
-tokens_contract = w3.eth.contract(
-    address="0xeE1502e29795Ef6C2D60F8D7120596abE3baD990", abi=contract_abi
-)
+tokens_contract = w3.eth.contract(address=tokens_contract_address, abi=contract_abi)
 
 
 # Function to cache PDF
@@ -104,13 +102,14 @@ def getSubgraphResults(caip10address, registry_address):
     # Define the GraphQL query, inserting the key0 and registry_address
     query = f"""
     {{
-        litems(where:{{key0:"{caip10address.lower()}", registry:"{registry_address.lower()}", status_in:[Registered,ClearingRequested,RegistrationRequested]}}){{
+        litems(where:{{key0_ends_with_nocase:"{caip10address.lower()}", registry:"{registry_address.lower()}", status_in:[Registered,ClearingRequested]}}){{
             itemID
             key0
             status
         }}
     }}
     """
+    print(query)
 
     # Define the URL of the GraphQL endpoint
     graphql_url = "https://api.thegraph.com/subgraphs/name/kleros/legacy-curate-xdai"
@@ -155,17 +154,38 @@ def createTagsPrompt(_itemID, data):
         print(f"Error searching in perplexity: {e}")
     # do some parsing with this response
 
+    # Check for duplicates
+    existingEntries = getSubgraphResults(
+        curatedObject["values"]["Contract Address"], tags_contract_address
+    )["data"]["litems"]
+    print(existingEntries)
+
     try:
         OpenAI_prompt = (
             "This is the acceptance policy for this registry: \n```"
             + policyText
-            + "```\n"
+            + "```\n\n"
             + "Here is the information submitted about the contract: \n```"
             + object_to_text_lines(curatedObject["values"])
-            + "```\n"
+            + "```\n\n"
             + "The information found independently from the internet about this contract: \n```"
             + perplexity_text_results
-            + "```\n"
+            + "\n\n"
+            + "If there is already an entry for this address on this chain, it should be rejected outright. After checking the subgraph for this registry, it is "
+            + str(len(existingEntries) > 0)
+            + " that there is already an existing entry for this address on this chain"
+            + (
+                (
+                    " and it can be found at https://curate.kleros.io/tcr/100/"
+                    + tags_contract_address
+                    + "/"
+                    + existingEntries[0]["itemID"]
+                )
+                if (len(existingEntries) > 0)
+                else ""
+            )
+            + "."
+            + "```\n\n"
             + "Taking into account both the acceptance policy and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically ending and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
         )
         print(OpenAI_prompt)
@@ -214,24 +234,44 @@ def createTokensPrompt(_itemID, data):
         print(f"Error searching in perplexity: {e}")
     # do some parsing with this response
 
+    # Check for duplicates
+    existingEntries = getSubgraphResults(
+        curatedObject["values"]["Address"], tokens_contract_address
+    )["data"]["litems"]
+
     try:
         OpenAI_prompt = (
             "This is the acceptance policy for this registry: \n```"
             + policyText
-            + "```\n"
+            + "```\n\n"
             + "Here is the information submitted about this supposed token contract: \n```"
             + object_to_text_lines(curatedObject["values"])
-            + "```\n"
+            + "```\n\n"
             + "The information found independently from the internet about this supposed token contract: \n```"
             + perplexity_text_results
-            + "```\n"
+            + "```\n\n"
             + "The format of the token's logo is "
             + str(logo_width)
             + " x "
             + str(logo_height)
             + " and the format is ."
             + str(logo_format)
-            + "\n"
+            + "\n\n"
+            + "If there is already an entry for this address on this chain, it should be rejected outright. After checking the subgraph for this registry, it is "
+            + str(len(existingEntries) > 0)
+            + " that there is already an existing entry for this address on this chain"
+            + (
+                (
+                    " and it can be found at https://curate.kleros.io/tcr/100/"
+                    + tokens_contract_address
+                    + "/"
+                    + existingEntries[0]["itemID"]
+                )
+                if (len(existingEntries) > 0)
+                else ""
+            )
+            + "."
+            + "```\n\n"
             + "Taking into account both the acceptance policy, the image dimensions, and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically ending and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
         )
         print(OpenAI_prompt)
