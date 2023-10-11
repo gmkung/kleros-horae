@@ -109,7 +109,6 @@ def getSubgraphResults(caip10address, registry_address):
         }}
     }}
     """
-    print(query)
 
     # Define the URL of the GraphQL endpoint
     graphql_url = "https://api.thegraph.com/subgraphs/name/kleros/legacy-curate-xdai"
@@ -143,11 +142,12 @@ def createTagsPrompt(_itemID, data):
     # Analyze with Perplexity.AI
     try:
         perplexity = Perplexity()
+
         response = perplexity.search_sync(  # search_sync returns the final dict while search returns a generator that streams in results
-            "Do a thorough search online and tell me what the contract at this address is for?"
+            "Do a thorough search online and tell me what the contract at this address is for? "
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
         )
-        perplexity_text_results = response["answer"]  # 'response'
+        perplexity_text_results = "asdasdasd"  # response["answer"]  # 'response'
 
         perplexity.close()
     except Exception as e:
