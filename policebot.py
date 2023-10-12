@@ -186,7 +186,7 @@ def createTagsPrompt(_itemID, data):
             )
             + "."
             + "```\n\n"
-            + "Taking into account both the acceptance policy and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically ending and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
+            + "Taking into account both the acceptance policy and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
         )
         print(OpenAI_prompt)
     except Exception as e:
@@ -255,7 +255,7 @@ def createTokensPrompt(_itemID, data):
             + " x "
             + str(logo_height)
             + " and the format is ."
-            + str(logo_format)
+            + str(logo_format) + " . Verify that both the width and height of the image are greater than the dimensions set out in the policy. The width and height do not have to be the same. Acknowledge that you can't see the contents of the image."
             + "\n\n"
             + "If there is already an entry for this address on this chain, it should be rejected outright. After checking the subgraph for this registry, it is "
             + str(len(existingEntries) > 0)
@@ -272,7 +272,7 @@ def createTokensPrompt(_itemID, data):
             )
             + "."
             + "```\n\n"
-            + "Taking into account both the acceptance policy, the image dimensions, and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically ending and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
+            + "Taking into account both the acceptance policy, the image dimensions, and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
         )
         print(OpenAI_prompt)
     except Exception as e:
