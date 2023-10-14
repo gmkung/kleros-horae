@@ -2,7 +2,7 @@ from policebot import handle_event
 import requests
 
 itemIDArray = [
-    "0x0749daf7c601fac5cc62b0f46b2d86be11a2bf3c4d005d98daae886d8219b9a7"
+    "0x2f3893e7d185642b209398b5ff8dda6210105c4f2c6bec44f63145cb598e7067",
 ]
 
 
@@ -47,7 +47,9 @@ for itemID in itemIDArray:
     try:
         if itemData["registryAddress"] == "0xee1502e29795ef6c2d60f8d7120596abe3bad990":
             registryName = "Tokens"
-        elif itemData["registryAddress"] == "0x66260c69d03837016d88c9877e61e08ef74c59f2":
+        elif (
+            itemData["registryAddress"] == "0x66260c69d03837016d88c9877e61e08ef74c59f2"
+        ):
             registryName = "Tags"
         else:
             raise Exception("Unknown registry: " + itemData["registryAddress"])

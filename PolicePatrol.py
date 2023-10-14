@@ -46,7 +46,7 @@ while True:
     # Main loop to listen for events
     while True:
         try:
-            print("Looping Tags police patrol")
+            # print("Looping Tags police patrol")
             new_tags_entries = tags_new_item_filter.get_new_entries()
 
             for event in new_tags_entries:
@@ -58,7 +58,7 @@ while True:
             print(f"Error in loop: {e}")
 
         try:
-            print("Looping Tokens police patrol")
+            # print("Looping Tokens police patrol")
             new_token_entries = tokens_new_item_filter.get_new_entries()
 
             for event in new_token_entries:

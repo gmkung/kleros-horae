@@ -147,7 +147,7 @@ def createTagsPrompt(_itemID, data):
             "Do a thorough search online and tell me what the contract at this address is for? "
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
         )
-        perplexity_text_results = "asdasdasd"  # response["answer"]  # 'response'
+        perplexity_text_results = response["answer"]  # 'response'
 
         perplexity.close()
     except Exception as e:
@@ -255,7 +255,8 @@ def createTokensPrompt(_itemID, data):
             + " x "
             + str(logo_height)
             + " and the format is ."
-            + str(logo_format) + " . Verify that both the width and height of the image are greater than the dimensions set out in the policy. The width and height do not have to be the same. Acknowledge that you can't see the contents of the image."
+            + str(logo_format)
+            + " . Verify that both the width and height of the image are greater than the dimensions set out in the policy. The width and height do not have to be the same. Acknowledge that you can't see the contents of the image."
             + "\n\n"
             + "If there is already an entry for this address on this chain, it should be rejected outright. After checking the subgraph for this registry, it is "
             + str(len(existingEntries) > 0)
