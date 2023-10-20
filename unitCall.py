@@ -2,9 +2,7 @@ from policebot import handle_event
 import requests
 
 itemIDArray = [
-    "0x228e57b63cbb04fe05a7aa932fdce4185ee88b89da220ca766bc7cb0da85499b",
-    "0x23c89ac3c1dff094d2c133518b4c317097ef3fb01f5d55014c2127ed07db5fe7",
-    "0x5736320e23a92bb6d3a0913b6a2c028fc4dd5c1ddd53a48b95a8da8658c75cf2",
+    "0x4be2e5e83493e2ff114a51f547e30e32fa77ac4253cf562e42f991e833c196ae",
 ]
 
 
