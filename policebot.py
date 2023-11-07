@@ -147,7 +147,7 @@ def createTagsPrompt(_itemID, data):
             "Do a thorough search online and tell me what the contract at this address is for? "
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
         )
-        console.log(response)
+        print(response)
         perplexity_text_results = response["answer"]  # 'response'
 
         perplexity.close()
