@@ -34,10 +34,13 @@ class Perplexity:
         self.last_uuid: str = None
         self.backend_uuid: str = None # unused because we can't yet follow-up questions
         self.frontend_session_id: str = str(uuid4())
-
+        print("control11")
         assert self._ask_anonymous_user(), "failed to ask anonymous user"
+        print("control12")
         self.ws: WebSocketApp = self._init_websocket()
+        print("control13")
         self.ws_thread: Thread = Thread(target=self.ws.run_forever).start()
+        print("control14")
         self._auth_session()
 
         while not (self.ws.sock and self.ws.sock.connected):
