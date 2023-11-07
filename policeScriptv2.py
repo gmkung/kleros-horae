@@ -1,4 +1,4 @@
-#This script runs by default for the past day.
+#This script runs by default for the past day. Currently configured by a cron job to run at 1 am UTC everyday.
 #if reruns for specific days is needed, use: heroku run python your_script.py --date "YYYY-MM-DD"
 import argparse
 from datetime import datetime, timedelta
