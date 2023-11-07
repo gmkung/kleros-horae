@@ -47,7 +47,7 @@ class Perplexity:
             while not (self.ws.sock and self.ws.sock.connected):
                 sleep(0.01)
         except Exception as e:
-            print("error initiating: {e} ")
+            print(f"error initiating: {e} ")
 
     def _recover_session(self, email: str) -> None:
         with open(".perplexity_session", "r") as f:
