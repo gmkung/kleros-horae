@@ -140,6 +140,7 @@ def createTagsPrompt(_itemID, data):
         print(f"Error fetching curated IPFS object: {e}")
 
     # Analyze with Perplexity.AI
+    print("control")
     try:
         perplexity = Perplexity()
 
