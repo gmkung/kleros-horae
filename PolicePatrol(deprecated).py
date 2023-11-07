@@ -10,7 +10,7 @@ w3 = Web3(
         "https://nd-500-249-268.p2pify.com/512e720763b369ed620657f84d38d2af"
     )
 )
-w3.eth.defaultAccount = "0x814D43C478EEE41884279afde0836D957fe63254"
+w3.eth.defaultAccount = "0xA5C9F2ebC96B4EE1Ec2908Daa0d1eCD9aDBe0caF"
 
 # Initialize contract
 tags_contract_address = "0x66260C69d03837016d88c9877e61e08Ef74C59F2"
