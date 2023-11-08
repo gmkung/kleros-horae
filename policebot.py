@@ -140,17 +140,13 @@ def createTagsPrompt(_itemID, data):
         print(f"Error fetching curated IPFS object: {e}")
 
     # Analyze with Perplexity.AI
-    print("control")
-    try:
-        print("control2")
+    
+    try:    
         perplexity = Perplexity()
-        print("control3")
         response = perplexity.search_sync(  # search_sync returns the final dict while search returns a generator that streams in results
             "Do a thorough search online and tell me what the contract at this address is for? "
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
         )
-        print("Perplexity response")
-        print(response)
         perplexity_text_results = response["answer"]  # 'response'
 
         perplexity.close()
