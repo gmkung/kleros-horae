@@ -8,6 +8,7 @@ import openai
 from perplexity import Perplexity
 import random
 from PIL import Image
+from perplexity import Perplexity
 
 openai.api_key = os.environ.get("OpenAI_API_Key", "default_value")
 
