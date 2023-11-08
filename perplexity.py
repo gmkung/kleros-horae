@@ -11,43 +11,37 @@ from requests import Session, get, post
 
 class Perplexity:
     def __init__(self, email: str = None) -> None:
-        try:
-            self.session: Session = Session()
-            self.user_agent: dict = { "User-Agent": "Ask/2.4.1/224 (iOS; iPhone; Version 17.1) isiOSOnMac/false", "X-Client-Name": "Perplexity-iOS" }
-            self.session.headers.update(self.user_agent)
+        self.session: Session = Session()
+        self.user_agent: dict = { "User-Agent": "Ask/2.4.1/224 (iOS; iPhone; Version 17.1) isiOSOnMac/false", "X-Client-Name": "Perplexity-iOS" }
+        self.session.headers.update(self.user_agent)
 
-            if email and ".perplexity_session" in listdir():
-                self._recover_session(email)
-            else:
-                self._init_session_without_login()
+        if email and ".perplexity_session" in listdir():
+            self._recover_session(email)
+        else:
+            self._init_session_without_login()
 
-                if email:
-                    self._login(email)
+            if email:
+                self._login(email)
 
-            self.email: str = email
-            self.t: str = self._get_t()
-            self.sid: str = self._get_sid()
-        
-            self.n: int = 1
-            self.base: int = 420
-            self.queue: list = []
-            self.finished: bool = True
-            self.last_uuid: str = None
-            self.backend_uuid: str = None # unused because we can't yet follow-up questions
-            self.frontend_session_id: str = str(uuid4())
-            print("control11")
-            assert self._ask_anonymous_user(), "failed to ask anonymous user"
-            print("control12")
-            self.ws: WebSocketApp = self._init_websocket()
-            print("control13")
-            self.ws_thread: Thread = Thread(target=self.ws.run_forever).start()
-            print("control14")
-            self._auth_session()
+        self.email: str = email
+        self.t: str = self._get_t()
+        self.sid: str = self._get_sid()
     
-            while not (self.ws.sock and self.ws.sock.connected):
-                sleep(0.01)
-        except Exception as e:
-            print(f"error initiating: {e} ")
+        self.n: int = 1
+        self.base: int = 420
+        self.queue: list = []
+        self.finished: bool = True
+        self.last_uuid: str = None
+        self.backend_uuid: str = None # unused because we can't yet follow-up questions
+        self.frontend_session_id: str = str(uuid4())
+
+        assert self._ask_anonymous_user(), "failed to ask anonymous user"
+        self.ws: WebSocketApp = self._init_websocket()
+        self.ws_thread: Thread = Thread(target=self.ws.run_forever).start()
+        self._auth_session()
+
+        while not (self.ws.sock and self.ws.sock.connected):
+            sleep(0.01)
 
     def _recover_session(self, email: str) -> None:
         with open(".perplexity_session", "r") as f:
