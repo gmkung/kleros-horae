@@ -1,0 +1,208 @@
+registryName,registryAddress,itemID,status,key0,key1,key2,key3,key4,openai_commentary,verdict
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00043547c2786381f19d83e46d684d61d824c36f711fcc6169403ec62a766fc6,Registered,eip155:137:0x726bB6aC9b74441Eb8FB52163e9014302D4249e5,,,,,"Upon the analysis of the given submission and according to the policy provided, I believe the following are to be considered:
+
+1. The contract address, 'eip155:137:0x726bB6aC9b74441Eb8FB52163e9014302D4249e5', is provided correctly according to standards. 
+
+2. The Project Name 'XEN Crypto', and Public Name Tag 'mXENT Token v2' are clear and do not appear to pose any ambiguity.
+
+3. The User Interface/Website URL 'https://xen.network/' could potentially be the related project link.
+
+4. The Public Note 'XEN Crypto's official mXENT Token v2 contract on Polygon' provides additional, relevant information about the contract.
+
+However, there's a critical piece missing. The independent verification of contract information from the internet is unclear, as we cannot find any specific context or information about the contract at this address. Without this independent validation, and based on Kleros ecosystem's rule that ""all IPFS data pertaining to the entry must be accessible and discoverable, otherwise the entry must be rejected"", I am leaning towards not accepting the entry.
+
+With that said, I'm inviting comments from others to further inspect my analysis, as there could be information omitted or overlooked. 
+
+Based on the current information and policy, my verdict is: INCONCLUSIVE.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0015fddaae32fe6c01b44cca89d9c1d56eaf93e655f52ba4fe1d43af48502c82,Registered,eip155:1:0xD5e7D22362BCC9881D06512d3189eAe79DD98d70,,,,,"Based on the provided information, it appears that the submission has fulfilled the required criteria outlined in the registry acceptance policy. The submission includes a Contract Address that points to a deployed contract, a unique Public Name Tag, and a relevant Project Name. It also provides a URL as the User Interface/Website Link and a concise Public Note.
+
+Since the contract address is not already present in the registry (as indicated by the last paragraph), there is no concern of duplication.
+
+However, due to lack of independent online information about the contract, we lack a secondary validation of the information for the Miyazaki Inu's MIYAZAKI Token. 
+
+Given the details at hand, the submission adheres to the guidelines, and in the absence of contradictory evidence, currently it is comprehensible and not nonsensical.
+
+Given these reasons, I suggest the entry to be ACCEPTED into the registry. Still, I invite others to share their insights or concerns if they think that the decision should be otherwise.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x00275b143a8d81b45bcfff5a8cafbdd67d0e1bad15743b62d475ebeaeb599ad1,Registered,eip155:1:0x4da08a1Bff50BE96bdeD5C7019227164b49C2bFc,,,,,"Upon analyzing the presented evidence, the submitted token information appears to be correct and in line with the independent research found online. 
+
+The token name (Mononoke Inu), contract address (eip155:1:0x4da08a1Bff50BE96bdeD5C7019227164b49C2bFc), and symbol (""Mononoke-Inu"") correlate with the independent findings. Additionally, the token complies with the minimum decimal requirement (9 decimals). 
+
+In terms of submitted logo, although exact contents cannot be reviewed, the given format and size (275x275 px, .png) seem acceptable, as they are greater than the minimal requirement (128x128 px). 
+
+Furthermore, according to the registry, there is no pre-existing entry for this address on this chain, meaning no duplication. 
+
+Finally, no major issues seem to be associated with this token based on the submitted information and online research.
+
+Therefore, considering the presented evidence and in compliance with the Kleros ""Tokens"" Registry Guidelines, I believe we can #ACCEPT# the entry into the registry.
+
+Please feel free to comment on my verdict.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x004d915551377b541b57c99f7fccf40bbc257bed9a57261eb3249e88cfe7d460,Registered,eip155:1:0xA67E9F021B9d208F7e3365B2A155E3C55B27de71,,,,,"Based on the presented data, the token information seems to follow the guidelines set forth by the Kleros ""Tokens"" registry. The specifics are generally correct:
+
+- The contract address provided is in the required format.
+- Token name, KleeKai and the symbol, KLEE, appear appropriate.
+- There is no repetition of this submission as per the subgraph check.
+- The dimensions of the image appear to exceed the minimum requirement of 128x128 px, but we cannot verify the content of the image as required by the guidelines.
+
+However, a significant point to note is the absence of independently obtained information about the contract at the given address. As per the Kleros guidelines, the token contract must be devoid of any major issues. However, we cannot verify the same due to the lack of independent information available. 
+
+Although the submission does not appear as nonsense, the absence of independent verification of the authenticity of the contract and public acknowledgement of the token raises a level of uncertainty. 
+
+Considering the alignment of the provided details with the registry conditions and the lack of external confirmation, I would invite further input based on this analysis. 
+
+For my part, I lean towards an #INCONCLUSIVE# judgement until more data becomes available.",INCONCLUSIVE
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0058e6193f9d34fe3ef6395a97876187656f7dc127f8c949196b364974ec4ac3,Registered,eip155:1:0x7F3Fe9D492A9a60aEBb06d82cBa23c6F32CAd10b,,,,,"Based on the presented information and the registry guidelines, the token contract address doesn't yield any information publicly, meaning we cannot independently verify the validity of the token. Furthermore, the absence of an independent online confirmation from a reliable source raises concerns regarding the token's authenticity. 
+
+While the format and dimensions of the provided logo fit the guidelines, and there's no preexisting entry for this address on the chain, the lack of independent online confirmation results in insufficient certainty about the token's legitimacy.
+
+Hence, the token does not meet all the necessary criteria that would justify its approved entry into the registry as per the current requirements.
+
+I invite anyone to comment, share their thoughts or provide additional information regarding this particular case.
+
+Until such additional information is provided, my verdict for this submitted token is #REJECT#.",REJECT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x005931e40265ae66235456ce51667aa8508a7ae1fc883c937921d2bfd0d00b40,Registered,eip155:1:0xcff6eF0B9916682B37D80c19cFF8949bc1886bC2,,,,,"Based on the assessment of the presented information and the criteria stated in the acceptance policy for the Kleros ""Address Tag"" Registry, I believe the entry adheres to all the necessary guidelines.
+For the acceptance:
+
+1. The contract address provided exists and is not an Externally Owned Account (EOA). 
+
+2. The project name ""Zapper"" and the public name tag ""SushiSwap Zap In v3.0.0"" create a unique identifier for this contract, which accords to the policy requirement of uniquely and unambiguously identifying the smart contract.
+
+3. The public name tag is unique within the project ""Zapper"", does not exceed the limit of 50 characters and pertains directly to the address being tagged.
+
+4. The information provided doesn't contain any markdown or code, nor does it include descriptors that are vague or dependent on external sources to be understood fully.
+
+5. The tag differentiates the contract effectively by mentioning its version.
+
+6. The submission does not seem to be grossly incorrect or misleading in any way.
+
+7. The UI/Website link provided refers to the relevant product/brand/website.
+
+After a thorough assessment of all the criteria, the contract submission for this address appears to satisfy all the necessary guidelines. I'd appreciate other Kleros juror inputs on this matter to ensure a fair and comprehensive evaluation. 
+However, considering all the information available and criteria presented, my juror decision would be to ACCEPT.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x006564f83290b1f7cd97d82ec1f80078ca4a5fec3559a50d65fa9d5245ce8590,Registered,eip155:137:0x6f8a06447Ff6FcF75d803135a7de15CE88C1d4ec,,,,,"Based on the information provided and the tokens registry guidelines, I have the following observations:
+
+1. **Address**: The submitted address follows the standard CAIP-10 format and does not appear in the existing entries of the same chain.
+   
+2. **Name**: The name ""Shiba Inu"" and symbol ""SHIB"" are well recognized in the cryptocurrency market, suggesting legitimacy in its prominence. 
+
+3. **Decimals**: The provided decimals count, '18', is common in the crypto ecosystem, aligning with the policy.
+
+4. **Logo**: The logo's format and dimensions fit the policy's requirement, albeit its content couldn't be analyzed. However, the inability to assess the content of the logo does not directly lead to rejection.
+
+The independent search did not reveal specific information about the contract at the addressed 0x6f8a06447Ff6FcF75d803135a7de15CE88C1d4ec. Although this lack of information is a concern, it does not violate the acceptance rules directly, as these do not strictly necessitate external contract-specific information.
+
+Considering above findings, I would #ACCEPT# this submission into the registry, assuming it does not contain any major issues not highlighted in this case. My conclusion relies on available data and policy rules, and I invite further examination and discussions from other jurors. However, note that my acceptance is on condition that the submitted entry provides true and accurate data. Moreover, continuous accessibility and discoverability of all IPFS data should be maintained per the submission period as per policy guidelines.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00711bf07b1c731921965bab59cb4c82bdd1f304b43c9ca615707e2954de7b43,Registered,eip155:1:0x69B9C98e8D715C25B330d0D4eB07e68CbB7F6CFC,,,,,"Based on the acceptance policy of the Kleros ""Address Tag"" Registry and the information submitted, the entry appears to be in alignment with the stated guidelines. The key fields in the submission, namely the Contract Address, Public Name Tag, Project Name, and UI/Website Link, follow the rules stipulated in the policy document.
+
+However, upon conducting an independent search online, we were unable to find any significant evidence or corroborating information about the contract at the given address. While the absence of such information doesn't necessarily indicate wrongfulness, it does complicate efforts towards confirmation of this submission.
+
+Therefore, until any additional or missing information can be found or supplied, I find it difficult to make a definitive judgment on whether the entry should be accepted into the registry.
+
+On this basis, I would like to invite others to weigh in on their view of this matter as well. 
+
+Final verdict: INCONCLUSIVE.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00a63bb454d937a7cfe1fe27ef82346921fba6d4d2c265e7bb4cb6d6c85964d1,Registered,eip155:1:0x4EBB2384CC1e86F578E37f2057b336B9027cb95a,,,,,"Given the evidence provided and the guidelines stipulated by the Kleros ""Address Tag"" Registry, it appears that the submitted entry has adherently abided by all required criteria. The Contract Address points to an identifiable deployed contract associated with the Project Name ""Introducing World App,"" which hosts the ""WLDAPP Token"". 
+
+The Public Name Tag and Project Name uniquely identify the contract. Additionally, the Public Notation has aptly included details not mentioned in other fields. The provided URL leads to a relevant interface for the corresponding token, which supports legitimacy and verifiability.
+
+Furthermore, independent research indicates that the information regarding the contract is accurate, and the contract itself is transactionally active on the Ethereum blockchain. It has also been verified that there are no duplicate entries for this contract address in the registry.
+
+In view of these facts and after careful assessment, I would invite others to comment before concluding, I propose this entry to be ACCEPTED.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x00a8f35aa927acbddac9184dd21024dbfb335afc9f1f5eb257165e714b57ba10,Registered,eip155:1:0xF4134146AF2d511Dd5EA8cDB1C4AC88C57D60404,,,,,"After having reviewed the provided details, in accordance with the Kleros ""Tokens"" Registry Guidelines, version 2.0, the submitted application's intrinsic information appears sound and compliant with the policy requirements.
+
+The token name ""SunContract"" does not carry any suffix such as “Token” or “Coin”, which is in accordance with the rules. The submitted contract address does not appear to be duplicated and the CAIP-10 format (eip155:1:0xF4134146AF2d511Dd5EA8cDB1C4AC88C57D60404) appears legitimate. The token symbol ""SNC"" matches the name, and the decimal count of 18 is standard.
+
+However, independent online validations have not conclusively established what the specific contract at address 0xF4134146AF2d511Dd5EA8cDB1C4AC88C57D60404 is for, leaving room for potential concern over its veracity. Furthermore, the image dimensions listed in the application are larger than the 128px X 128px requirement stated in the policy. As per my understanding, though the guidelines do not pose an explicit upper limit to the image size, the given image size could potentially cause formatting and performance issues.
+
+The provided information rests on the verge of acceptance but leaves certain aspects largely unverified. Although the submitted details fulfill required guidelines on the surface, further investigation is needed to comprehensively ascertain this entry's legitimacy.
+
+Your thoughts and comments regarding this submission are welcomed and highly appreciated. For the time being, my judgment on this particular entry submission is #INCONCLUSIVE#.",INCONCLUSIVE
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x00a9d2045808e91e1ac2948eb3feb3a06706ca7c810b96b25c03eadcaf34e76c,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00b4a183b1cd550c000126dcd5bbdd820cabf254285c4bdd5afd9a33a279c928,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00b4fdb5c10ee7310ad94d9951813adf1aa5f5c30918adeaabb5720c2365ed63,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00d55a9cb8424002da38b9f511f1b0865a3e442e41547a3bbcb5c8a6123ea672,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00fb1e43230b026884688d6377a7f8cf88141bec05b11704847a2c84b3fe937b,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x010ce6457a79063024b1994ac4d6c1bf6c74b67b9ccc400475c6061914ec17e8,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x012332264e4c4572d49390d4ab67bbf4d4ecf413d1730255ebd648c1b2cc0684,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0124986531ae02946cb88f9164d88585991daf7e51a57c2453fafcea48ff380f,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x01259dece850b1444887b47305e87035761c86f11a1a7194e0ef751ed959e59f,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x013c343a58fdaaccdd26d8c1fbe32f2fa45e0c1c152059fca175be34c4cd6327,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x015ac887d41d1547773e4cd5405bc501a5d16273dda413afb0dcc43884765654,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0173bd7ef1920efee20a833b33abe994f710bdce1289169e48c5a1a9b5704b15,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0180f22ea5d317d3ef0773ebb5d1aee2dd21698d4404782d15356f4d748bb407,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0187e7520c15651395eef8062a4bf48109b238f809a55e7edb143998f22459d2,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x01a44b3f5d9d43a2a129e7df7942a5883ed9c4ecf538893620b80bb17d748b1a,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x01b8800e623b4baebd8e6b203a72122a5d2b691ba32da68ac8cf3fcbbc6672a2,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x01cc85cc231ff5d5981abb429df47574c3045d5dcdeebc834f894b2d1a5d23ba,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x01e5af414f1241668ed775b134bfb3c9fc608eb8378069d6b39a8344abc1a0e3,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x01f9dd7d64b89efd70619927746d11d360bbc44ae66c72278e45a1cdc333b388,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0203ab455729761a567d53da51741ec2ddf697ae602a1404f8e524f2a38695cb,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x020f5d8a3c968de33bf3f0c98dfddcd713824bcab2cfd83918178dd316e0117d,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x021287901f80e68ab053149443102fc5933c889cd636aba664271ea3ea73b35e,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0224a67be4219dbf5e0f6c45aa576cff0edf5824f494c2308be819db9da683d9,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x02315286d287dba2be6c2c4981e9f0ecc42f96f85fcd3aa17fa3f80c534dd551,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0241464cecdfa124573181f90e5c8bb15d020d260f8bd9605bdad397be566e90,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x02939ab66d02268a2323376637796aa8ead3574bab7990f8d95e366cb8dbb865,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x029bf89fadff8d814984e1b3e023180a9ff2f6f5ceffa21ac8e49b37adc2d9a7,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x02af5d695fb3889517f9c95802139fe39fa107111703cb6a7ce844ff31965a89,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x02c77e1fe9530cb0ae73d3aa38f7bf78c7d1d03096ce6ad485d5f6e445837558,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x02c87ec824f634c343f935b57ec6cfe0d37f505f2838488cfabd18a11aeb987c,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x02d90cb7add0898ea4fe01334c422668b40f59988c1c680edb658a78b8986b49,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x02f90ca636fd70a9bff2e83c46a4cf2376d1e1445ce43dc55949eaf2d7b433e2,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x031c739e79232320f8181606ea96f9d6e2f6e5d79da38a5ca449287f80bf1ca5,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x033faac408a39853c922ed52afadaab5e5b63ea2a50a47dc6cb604fefa612324,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0356e9af98b4e27485929e8992e643f00e157daeefd87ebfcfc91dc4c7599930,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x03642b181c7623445a9a1d5954388d9e25e7c6bc513ce435d0f460d2fc63fce6,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x03791b0983ae107ae32e740823f96e12eb57c1f1beb1be51af13e50446b17731,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x037e41107bd874859436af79fd3d5c24732b788aac40d32636f110ff39ff3c61,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0392ac018dd5cdcc0af1533237422573dd9dc30fe0ec18ea53d50c51996c44f3,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0397622228eb9660eda2e868be9d03ca66545c86a0c0bb8ae73048439e2a9c49,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x03baa282b564b484e10cc2285e9ee4989ddb7976ccb31c913d209fc9df333c4e,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x03d198e221714ea99d91f02b4017c78d66eb4965e9afe9fdaf7c133a7324c69b,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x03ea73cf4edb575ab40155432848b4aa0868d1edbe2b72c632e8ebe6ccc53c6b,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x03ece75aaf48ccda6fb54711038723ee4b98051a4787fd4093c1912363644046,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x043f6994f7bf37f51557a55c1fb99d6e19947322a767276a08a3e25c80029168,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x045fc17464c0dad96514468e4b08816be1f6117d1c6f8b28ee14ccb55e1c1ae6,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x04782de76717f1715f5f5420c5733405bcb21467d919a808c2a1f1bdbce4fe99,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x048183186ca0efa3bcfcb96a64e530c1e8ed5a024297d30c83b53fc89abdbc97,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0486f9026a59e7f4544762e81c323c7ffa2569806288ed4123d4ee26655338c2,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0497b07764cd8b7c1d773043ce64f20c8e1e97f45b860812373d1d21b8741282,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x04a21c525ffaa9176345714dbaa15f238a72aabb55ccf41753034cc1696f3fda,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x04a8858703f4dff8a03efb9d918fe5d5a06caedc8f1b1cd620806c2b2f27cde0,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x04c9c80826ef56fb8d08eb8c6ca7c6a91c9c3fab33e2ea91cb519d6906a7fcde,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x04ce668fc5851ca9430de0274f651e60ee0c40cf35a39e1d0da7d4da93668cef,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x04d37929d874cb2b6de3f0be6753c387a4671a52fb8c35cf9e319ed17282a9c4,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x04dc8bc0f75b8c58e42e8b0f1e81bae4169b374f5b6c65b615fe23ae2eb61f5b,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0500c0737c3e976e81d19d209aa167c632501e672cfcc6f80bae3640a5190934,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0501fc3218368e356b19779f390b501146cf99a98d983ebb73b673ccdcea54c2,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x052e156fdb2d3f4ec66a688cdbd563b9a342dc3f33883862c282c7b2a912926d,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0543c264fdcaf8595c43484df465c3346b6edf3827b7fe597e5bf8ca32660762,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x056bc63aa2aae5fbba7ac27939d8c45b88a77196dc312b8a4394306b68791248,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0572bd633984e89dde0efa1c6f404828beb99ac374c9aba2b173e51106ae8bec,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0582f8f444ceaf5153ebd5d0b4165b7f1a38642197359f0796867d60652324f7,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0599b929c0692eecd3b48f4fe7afd98c4b3586cba5ce43b3d904a692880a063b,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x05b8e075cdcd5e79e9b65d3260b5ec7ef905af3a8dddc0a8c4773bb6eaefc263,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x05caef61e58a672765124858caeb321aa436b8f95a458352188211797ff02645,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x05da0db5b44134f2d94d05606e4587b1cb77aed6cddfd7d2764a542104100c34,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x05dc5a49948719f9a1090ee5d6d1c2f71b547973f11851dee8e1df78f6dac856,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x05e7a98b4092b43159e94f399aef12f1758df8f90719ecea3e209b82f4dca4b1,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x05e8fda8fec65430870dc12174f22dbab98600d468af2b27194ba30f495aeca4,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x05f033cc782599b35356c3dca9ec468f1407abc18d4ad1a13e93440420ce8c62,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x061f28df16286385c32f306b86b98bd81749603a9d2c73db98764784f4bd8685,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x063200e2a808dbb9ee090536dbd8ba5c8c93d92d84ddf345224ec5c568cde01a,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0669675af9ac63d8bfd6a9080d284c76c6d0433487a0acb96eeef3e0cffbe19f,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x066da25fcd647c35fbaf75d076b9acebac30fe3496c710b6607abfa2de35b7fb,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x06752061ae97e53586ae39fa0e3e059e387c45f87347cb160ac3408c2acb769a,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x067979261098a7a7536e7dc8a9494c076f8ca96b1760d4accc0fe38662fdd669,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x069f950428dba991395face8875afe605c9da96412bee212b230482d61ee376e,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x06a976448150b6cdc2a38aaaecae0e49148952a4e8555879b6e4261b652df357,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x06af002cb7d5ca65805d73d31c83bada6a544bea4675067f0c5286717c2d8b13,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x06b84a244235865a6ac6e530a1919d238bc56b1c4ad0360b9c8c9d19ffc875c6,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x06b9fbef4081cd5cd929e39c955163011da48f276f77a80edef4025a4e0dde1d,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x06bd3e1cff06ce575e0b5cb3ba4d9b9d45dc9fac9f7ba77cb42c8ed044e01b94,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x06d89817a574e3b52d129600d917b0358acd1df81a4880aea858e37a06e831a5,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x06d92ff3f77e842ebcf018dccbd332c54be43408d0412c2a5e9af554d048632f,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x070e67200f6fced57d5839a9b7f7ed809f37128fa5482127a854d28b406f91d0,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0718a1d1dcacb98cdb13fba33a39ad35d69a5ec9e8027334a8394fb4023a42c8,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0749daf7c601fac5cc62b0f46b2d86be11a2bf3c4d005d98daae886d8219b9a7,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x075b96df2e70b64c4cd87986ebaa2a5f7ac0087d22547f3f84b3cbaa0b7a21aa,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x075e91dda1c113ae77fd88025ed0fa7abbaad70399c5fae64235d5dc9955d5da,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,

@@ -106,6 +106,7 @@ def getSubgraphResults(caip10address, registry_address):
             itemID
             key0
             status
+            latestRequestSubmissionTime
         }}
     }}
     """
@@ -127,7 +128,7 @@ def getSubgraphResults(caip10address, registry_address):
     return response.json()
 
 
-def createTagsPrompt(_itemID, data):
+def createTagsPrompt(_itemID, data, timeStampToCheckAt):
     try:
         # Fetch JSON from IPFS
         policyText = extractPDF("/ipfs/QmSaJWBFGGZ3FussTi6MqfXrMsaE75asumR2LLuAZFcrSf")
@@ -140,13 +141,14 @@ def createTagsPrompt(_itemID, data):
         print(f"Error fetching curated IPFS object: {e}")
 
     # Analyze with Perplexity.AI
-    
+    perplexity_text_results ='NO RESULTS FROM PERPLEXITY.AI'
     try:    
         perplexity = Perplexity()
         response = perplexity.search_sync(  # search_sync returns the final dict while search returns a generator that streams in results
             "Do a thorough search online and tell me what the contract at this address is for? "
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
         )
+        print(response);
         perplexity_text_results = response["answer"]  # 'response'
 
         perplexity.close()
@@ -160,6 +162,14 @@ def createTagsPrompt(_itemID, data):
     )["data"]["litems"]
     print(existingEntries)
 
+    # Assuming 'timeStampToCheckAt' is defined and 'tags_contract_address' is defined
+
+    # Filter existingEntries with 'latestRequestSubmissionTime' < timeStampToCheckAt
+    filteredEntries = [
+        entry for entry in existingEntries
+        if entry.get('latestRequestSubmissionTime', float('inf')) < timeStampToCheckAt
+    ]
+
     try:
         OpenAI_prompt = (
             "This is the acceptance policy for this registry: \n```"
@@ -172,30 +182,30 @@ def createTagsPrompt(_itemID, data):
             + perplexity_text_results
             + "\n\n"
             + "If there is already an entry for this address on this chain, it should be rejected outright. After checking the subgraph for this registry, it is "
-            + str(len(existingEntries) > 0)
+            + str(len(filteredEntries) > 0)
             + " that there is already an existing entry for this address on this chain"
             + (
                 (
                     " and it can be found at https://curate.kleros.io/tcr/100/"
                     + tags_contract_address
                     + "/"
-                    + existingEntries[0]["itemID"]
+                    + filteredEntries[0]["itemID"]
                 )
-                if (len(existingEntries) > 0)
+                if len(filteredEntries) > 0
                 else ""
             )
             + "."
             + "```\n\n"
             + "Taking into account both the acceptance policy and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
         )
-        print(OpenAI_prompt)
+        #print(OpenAI_prompt)
     except Exception as e:
         print(f"Error creating OpenAI query: {e}")
 
     return OpenAI_prompt
 
 
-def createTokensPrompt(_itemID, data):
+def createTokensPrompt(_itemID, data,timeStampToCheckAt):
     try:
         # Fetch JSON from IPFS
         policyText = extractPDF("/ipfs/Qmak6tHNB4q1Y2ihYde9bZqKaB2wy8mRZ53ChnpCSRfiXR")
@@ -221,6 +231,7 @@ def createTokensPrompt(_itemID, data):
         print(f"Error fetching policy from IPFS: {e}")
 
     # Analyze with Perplexity.AI
+    perplexity_text_results ='NO RESULTS FROM PERPLEXITY.AI'
     try:
         perplexity = Perplexity()
         response = perplexity.search_sync(  # search_sync returns the final dict while search returns a generator that streams in results
@@ -238,6 +249,13 @@ def createTokensPrompt(_itemID, data):
     existingEntries = getSubgraphResults(
         curatedObject["values"]["Address"], tokens_contract_address
     )["data"]["litems"]
+
+    filteredEntries = [
+        entry for entry in existingEntries
+        if entry.get('latestRequestSubmissionTime', float('inf')) < timeStampToCheckAt
+    ]
+
+
 
     try:
         OpenAI_prompt = (
@@ -259,21 +277,21 @@ def createTokensPrompt(_itemID, data):
             + " . Verify that both the width and height of the image are greater than the dimensions set out in the policy. The width and height do not have to be the same. Acknowledge that you can't see the contents of the image."
             + "\n\n"
             + "If there is already an entry for this address on this chain, it should be rejected outright. After checking the subgraph for this registry, it is "
-            + str(len(existingEntries) > 0)
+            + str(len(filteredEntries) > 0)
             + " that there is already an existing entry for this address on this chain"
             + (
                 (
                     " and it can be found at https://curate.kleros.io/tcr/100/"
                     + tokens_contract_address
                     + "/"
-                    + existingEntries[0]["itemID"]
+                    + filteredEntries[0]["itemID"]
                 )
-                if (len(existingEntries) > 0)
+                if len(filteredEntries) > 0
                 else ""
             )
             + "."
             + "```\n\n"
-            + "Taking into account both the acceptance policy, the image dimensions, and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically and is not nonsense. End off your response using ACCEPT, REJECT or INCONCLUSIVE."
+            + "Taking into account both the acceptance policy, the image dimensions, and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically and is not nonsense. End off your response using the exact strings #ACCEPT#, #REJECT# or #INCONCLUSIVE#."
         )
         print(OpenAI_prompt)
     except Exception as e:
@@ -283,17 +301,21 @@ def createTokensPrompt(_itemID, data):
 
 
 # Function to handle new item events
-def handle_event(_itemID, data, registryType):
+def handle_event(_itemID, data, registryType, timeStampToCheckAt, mode):
+    response = {'openai_commentary': '', 'verdict': 'UNAVAILABLE'} # setting default
+
     try:
         # data = event["args"]["_data"]
         print("itemID: " + str(_itemID))
         print("data: " + data)
     except Exception as e:
         print(f"Error in parsing event data: {e}")
+        return response
+
     if registryType == "Tags":
-        OpenAI_prompt = createTagsPrompt(_itemID, data)
+        OpenAI_prompt = createTagsPrompt(_itemID, data,timeStampToCheckAt)
     elif registryType == "Tokens":
-        OpenAI_prompt = createTokensPrompt(_itemID, data)
+        OpenAI_prompt = createTokensPrompt(_itemID, data,timeStampToCheckAt)
     else:
         return
 
@@ -310,59 +332,71 @@ def handle_event(_itemID, data, registryType):
     )
 
     print(OpenAI_response["choices"][0]["message"]["content"])
+    
+    response['openai_commentary'] = OpenAI_response["choices"][0]["message"]["content"]
 
-    # Saving the evidence to Kleros's IPFS node
-    deityName = random.choice(
-        [
-            "Eunomia, AI goddess of good order",
-            "Dikē, AI goddess of fair judgements",
-            "Eirene, AI goddess of peace",
-        ]
-    )
-    expression = f"Opinion by {deityName}"
-    evidence_object = {
-        "title": expression,
-        "description": OpenAI_response["choices"][0]["message"]["content"],
-    }
-    evidenceIpfsUri = postJSONtoKlerosIPFS(evidence_object)
-    print(evidenceIpfsUri)
-
-    # Submit evidence to the contract
-
-    # Get the transaction data
-    if registryType == "Tags":
-        transaction_data = tags_contract.functions.submitEvidence(
-            _itemID, evidenceIpfsUri
-        ).build_transaction(
-            {
-                "gas": 2000000,
-                "nonce": w3.eth.get_transaction_count(w3.eth.defaultAccount),
-            }
+    # Search for verdict in the description
+    if "ACCEPT" in response['openai_commentary']:
+        response['verdict'] = 'ACCEPT'
+    elif "REJECT" in response['openai_commentary']:
+        response['verdict'] = 'REJECT'
+    elif "INCONCLUSIVE" in response['openai_commentary']:
+        response['verdict'] = 'INCONCLUSIVE'
+    
+    if (mode =='COMMENT_ONCHAIN'): #Send comments onchain only if requested.
+        # Saving the evidence to Kleros's IPFS node
+        deityName = random.choice(
+            [
+                "Eunomia, AI goddess of good order",
+                "Dikē, AI goddess of fair judgements",
+                "Eirene, AI goddess of peace",
+            ]
         )
-    elif registryType == "Tokens":
-        transaction_data = tokens_contract.functions.submitEvidence(
-            _itemID, evidenceIpfsUri
-        ).build_transaction(
-            {
-                "gas": 2000000,
-                "nonce": w3.eth.get_transaction_count(w3.eth.defaultAccount),
-            }
+        expression = f"Opinion by {deityName}"
+        evidence_object = {
+            "title": expression,
+            "description": OpenAI_response["choices"][0]["message"]["content"],
+        }
+        evidenceIpfsUri = postJSONtoKlerosIPFS(evidence_object)
+        print(evidenceIpfsUri)
+
+        # Submit evidence to the contract
+
+        # Get the transaction data
+        if registryType == "Tags":
+            transaction_data = tags_contract.functions.submitEvidence(
+                _itemID, evidenceIpfsUri
+            ).build_transaction(
+                {
+                    "gas": 2000000,
+                    "nonce": w3.eth.get_transaction_count(w3.eth.defaultAccount),
+                }
+            )
+        elif registryType == "Tokens":
+            transaction_data = tokens_contract.functions.submitEvidence(
+                _itemID, evidenceIpfsUri
+            ).build_transaction(
+                {
+                    "gas": 2000000,
+                    "nonce": w3.eth.get_transaction_count(w3.eth.defaultAccount),
+                }
+            )
+        else:
+            return
+
+        # Sign the transaction
+        signed_txn = w3.eth.account.sign_transaction(
+            transaction_data, os.environ.get("ETH_bot_private_key", "default_value")
         )
-    else:
-        return
 
-    # Sign the transaction
-    signed_txn = w3.eth.account.sign_transaction(
-        transaction_data, os.environ.get("ETH_bot_private_key", "default_value")
-    )
+        try:
+            # Send transaction
+            txn_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
 
-    try:
-        # Send transaction
-        txn_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
-
-        # Wait for transaction to be mined
-        txn_receipt = w3.eth.wait_for_transaction_receipt(txn_hash)
-        print("Evidence submitted successfully! ")
-        print(txn_receipt)
-    except Exception as e:
-        print("Error submitting transaction: " + e)
+            # Wait for transaction to be mined
+            txn_receipt = w3.eth.wait_for_transaction_receipt(txn_hash)
+            print("Evidence submitted successfully! ")
+            print(txn_receipt)
+        except Exception as e:
+            print("Error submitting transaction: " + e)
+    return response

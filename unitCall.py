@@ -16,6 +16,7 @@ def returnFirstResult(itemID):
                 data
                 registryAddress
                 key0
+                latestRequestSubmissionTime
             }
         }
     """
@@ -53,6 +54,7 @@ for itemID in itemIDArray:
             registryName = "Tags"
         else:
             raise Exception("Unknown registry: " + itemData["registryAddress"])
-        handle_event(bytes_object, itemData["data"], registryName)
+        response=handle_event(bytes_object, itemData["data"], registryName,itemData["latestRequestSubmissionTime"],'OFFCHAIN')
+        print (response)
     except Exception as e:
         print("Error reading registry name: " + str(e))
