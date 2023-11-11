@@ -437,13 +437,15 @@ def handle_event(_itemID, data, registryType, timeStampToCheckAt, mode):
     
     if (mode =='COMMENT_ONCHAIN'): #Send comments onchain only if requested.
         # Saving the evidence to Kleros's IPFS node
-        deityName = random.choice(
-            [
-                "Eunomia, AI goddess of good order",
-                "Dikē, AI goddess of fair judgements",
-                "Eirene, AI goddess of peace",
-            ]
-        )
+        if registryType == "Tokens":
+            deityName = "Eunomia, AI goddess of good order"
+        elif registryType == "Tags":
+            deityName = "Dikē, AI goddess of fair judgements"
+        elif registryType == "CDN":
+            deityName = "Eirene, AI goddess of peace"
+        else:
+            deityName = "Zeus, who works only when no one does."
+            
         expression = f"Opinion by {deityName}"
         evidence_object = {
             "title": expression,
