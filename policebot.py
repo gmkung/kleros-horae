@@ -381,6 +381,7 @@ def handle_event(_itemID, data, registryType, timeStampToCheckAt, mode):
         # data = event["args"]["_data"]
         print("itemID: " + str(_itemID))
         print("data: " + data)
+        print("registryType:"+ registryType)
     except Exception as e:
         print(f"Error in parsing event data: {e}")
         return response
@@ -411,7 +412,7 @@ def handle_event(_itemID, data, registryType, timeStampToCheckAt, mode):
     elif registryType =='CDN':
         OpenAI_response = openai.ChatCompletion.create(
             model="gpt-4-vision-preview",
-            max_tokens= 300,
+            max_tokens= 600,
             messages=[
                 {
                     "role": "system",

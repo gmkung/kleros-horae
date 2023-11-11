@@ -25,7 +25,7 @@ def query_events_by_date(start_timestamp, end_timestamp):
     query = """
         query GetItemsByDate($startTime: Int!, $endTime: Int!) {
             items: litems(where:{
-                registryAddress_in:["0x66260c69d03837016d88c9877e61e08ef74c59f2","0xee1502e29795ef6c2d60f8d7120596abe3bad990"],
+                registryAddress_in:["0x66260c69d03837016d88c9877e61e08ef74c59f2","0xee1502e29795ef6c2d60f8d7120596abe3bad990","0x957a53a994860be4750810131d9c876b2f52d6e1"],
                 latestRequestSubmissionTime_gte: $startTime,
                 latestRequestSubmissionTime_lt: $endTime
             }) {
@@ -58,6 +58,7 @@ def query_events_by_date(start_timestamp, end_timestamp):
 # Main execution
 if __name__ == "__main__":
     events = query_events_by_date(start_timestamp, end_timestamp)
+    print ("Number of events in this period: ", len(events))
     if events:
         for event in events:
             print ("event['itemID'][2:]",event['itemID'][2:])

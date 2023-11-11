@@ -206,3 +206,639 @@ Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0718a1d1dcacb98cdb13fba33a39ad
 Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0749daf7c601fac5cc62b0f46b2d86be11a2bf3c4d005d98daae886d8219b9a7,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
 Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x075b96df2e70b64c4cd87986ebaa2a5f7ac0087d22547f3f84b3cbaa0b7a21aa,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
 Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x075e91dda1c113ae77fd88025ed0fa7abbaad70399c5fae64235d5dc9955d5da,"Error: You exceeded your current quota, please check your plan and billing details.",,,,,,,
+registryName,registryAddress,itemID,status,key0,key1,key2,key3,key4,openai_commentary,verdict
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00043547c2786381f19d83e46d684d61d824c36f711fcc6169403ec62a766fc6,Registered,eip155:137:0x726bB6aC9b74441Eb8FB52163e9014302D4249e5,,,,,"Based on the data provided in the registry guidelines document and the contract details submitted, it seems that the details for the contract:
+
+`Contract Address: eip155:137:0x726bB6aC9b74441Eb8FB52163e9014302D4249e5
+Public Name Tag: mXENT Token v2
+Project Name: XEN Crypto
+UI/Website Link: https://xen.network/
+Public Note: XEN Crypto's official mXENT Token v2 contract on Polygon`
+
+adhere to the requirements outlined in the registry guidelines, barring any independent information available about the contract through a search online. They have not utilized any markdown or code, the Public Name Tag is under 50 characters, and the fields do not appear to contain ambiguous or abstract terms. Furthermore, the public note and name tag both indicate that this is the second version of the XEN Crypto's official mXENT Token.
+
+Given that the information was unable to be verified through an independent source, due to lack of context or details about this particular smart contract, it might be worth contacting the submitter for more information or wait for further evidence that corroborates the details provided. However, based solely on the contract submission details and the registry guidelines, and with the assumption that the contract indeed points to a valid contract (not an EOA), the details seem to meet the essential criteria.
+
+If any community member has further insight or perspectives on this matter, they are invited to share their thoughts.
+
+Verdict: INCONCLUSIVE.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0015fddaae32fe6c01b44cca89d9c1d56eaf93e655f52ba4fe1d43af48502c82,Registered,eip155:1:0xD5e7D22362BCC9881D06512d3189eAe79DD98d70,,,,,"Based on the presented details, the submission fulfills the following set criteria:
+
+1. The Contract Address points to a contract and not a standard wallet.
+2. The Project Name 'Miyazaki Inu' and Public Name Tag ""MIYAZAKI Token"" provide a unique and unambiguous identification of the smart contract.
+3. The Name Tag is unique within the project and adheres to the character limit and content rules.
+4. No use of markdown or code in the fields.
+5. The Name Tag does not require referral to other sources for understanding.
+6. Provided Website Link relates to the corresponding project/product.
+
+As per the policy, the inability to find independent online information should not factor into the decision unless the independently found details contradict the applicant's submission or indicate a potential case of fraud, neither of which is evident from the provided details.
+
+The only potential issue, the preexistence of an entry for the contract address, has been negated. Hence, there are no violations detected against the acceptance policy.
+
+In this case, as per the provided details and the policy rules articulated in the Kleros “Address Tag” Registry Guidelines document, I recommend that the submission should be ACCEPTED. I invite others to verify and comment on this judgment for further validation. 
+
+Recommendation: ACCEPT",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x00275b143a8d81b45bcfff5a8cafbdd67d0e1bad15743b62d475ebeaeb599ad1,Registered,eip155:1:0x4da08a1Bff50BE96bdeD5C7019227164b49C2bFc,,,,,"Based on the information provided, the submission appears to be consistent with the given acceptance policy.
+
+The token name ""Mononoke Inu"" has been corroborated independently on the internet. The contract address ""eip155:1:0x4da08a1Bff50BE96bdeD5C7019227164b49C2bFc"" has successfully mapped to the Mononoke Inu token on the Ethereum blockchain. With the symbol ""Mononoke-Inu"" aligning with online research.
+
+Additionally, the requirement of the logo being in PNG format and having a size of at least 128x128px is met as the logo dimensions exceed the minimum requirement at 275x275px.
+
+It has also been confirmed that there is no existing entry for this address on this chain, complying with the policy that in case of duplicates, only the first submission should be accepted.
+
+Thus, the entry submission appears to be valid in light of the Kleros Tokens Registry Guidelines. However, as I cannot verify the content of the IPFS data pertaining to the entry, the acceptance of this submission is subject to that data being accessible and discoverable.
+
+I welcome any comments or corrections to this assessment. Based on the current evaluation, I propose to: ACCEPT.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x004d915551377b541b57c99f7fccf40bbc257bed9a57261eb3249e88cfe7d460,Registered,eip155:1:0xA67E9F021B9d208F7e3365B2A155E3C55B27de71,,,,,"Reviewing the information submitted for the 'KleeKai' token, the following conclusions can be drawn in light of the Kleros ""Tokens"" Registry Guidelines:
+
+1. The spelling and capitalization of the name 'KleeKai' appear to be consistent with common usage.
+2. The provided contract address is in the correct format.
+3. The number of decimals, recorded as 9, is acceptable.
+4. The logo provided adheres to the PNG format and it has a size of 1273x1309px, which is acceptably above the prescribed minimum size of 128px X 128px.
+5. There appears to be no pre-existing entry for this address on this chain according to the registry subgraph.
+6. The symbol 'KLEE' seems appropriate and is coherent with the name of the token.
+
+However, given that no additional independent information about this token contract was found online, a full validation of its legitimacy remains inconclusive.  While the provided submission data seems to conform to the guidelines, the absence of third-party verification necessitates further investigation.
+
+For token acceptance, it is crucial to ensure the token's legitimacy, conformance with the provided guidelines, and absence of any potential harm for platform users. Currently, we lack sufficient data to guarantee that all these conditions are met. 
+
+Therefore, my judgment is: INCONCLUSIVE.
+
+I invite others to provide additional evidence or perspective that may contribute to a more definitive decision regarding this token's acceptance to the registry.",INCONCLUSIVE
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0058e6193f9d34fe3ef6395a97876187656f7dc127f8c949196b364974ec4ac3,Registered,eip155:1:0x7F3Fe9D492A9a60aEBb06d82cBa23c6F32CAd10b,,,,,"Given the information provided, the contract address (eip155:1:0x7F3Fe9D492A9a60aEBb06d82cBa23c6F32CAd10b) has not yet been conclusively identified or verified, which poses a risk for users and the registry. This lack of information creates uncertainty regarding the trustworthiness and validity of the token contract.
+
+The logo adheres to the requirement of a PNG format and a size of at least 128px x 128px, since the provided size is 400px x 400px. However, without access to the contents, we cannot determine if the symbol follows the other stipulated guidelines, such as being centered, taking up most of the space, not including the project or token name unless always included, and exhibiting high definition without appearing pixelated or blurry (unless purposely designed that way).
+
+Also important is the absence of any existing entry for this address on this chain, which aligns with the Acceptance rules in the policy.
+
+Despite some conformity with the policy, the lack of specific verified information about the contract brings the credibility and reliability of this address into question. This ambiguity can potentially expose users to financial loss or security breaches, which goes against the guideline of ensuring tokens that users can safely interact with.
+
+Considering these points, I invite the community to further discuss and scrutinize this submission. Based on the data currently available to us, my decision would be:
+INCONCLUSIVE.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x005931e40265ae66235456ce51667aa8508a7ae1fc883c937921d2bfd0d00b40,Registered,eip155:1:0xcff6eF0B9916682B37D80c19cFF8949bc1886bC2,,,,,"Reviewing the provided information and the acceptance policy, the submission appears to fulfill the necessary criteria for the Kleros “Address Tag” Registry. 
+
+Key points for consideration:
+
+- The Contract Address points to a deployed smart contract and not a regular wallet, complying with the required acceptance criteria.
+- The Project Name 'Zapper', coupled with the Public Name Tag 'SushiSwap Zap In v3.0.0', uniquely identifies the smart contract, eliminating ambiguity.
+- The Public Name Tag seems to be unique within the project and adheres to the character limit rule. It merely describes the address being tagged which is in line with the policy.
+- The provided User Interface/Website link directs to the relevant product/brand/website.
+- The Public Note field provides additional clarifying information on the contract.
+
+Given this information, I'm confident to suggest that the entry should be accepted into the registry.
+
+However, I encourage open discussion. If there's anyone who holds contradictory views, or additional information that can influence the verdict, please come forward and share accordingly.
+
+Final Verdict: ACCEPT",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x006564f83290b1f7cd97d82ec1f80078ca4a5fec3559a50d65fa9d5245ce8590,Registered,eip155:137:0x6f8a06447Ff6FcF75d803135a7de15CE88C1d4ec,,,,,"Upon review of the presented data that conforms to the Kleros “Tokens” Registry Guidelines, and considering the independent research for confirmation which yields no additional information about the supposed contract, it appears we don't have the required confirmations. The ""Shiba Inu"" token entry has shared correct and required format information about name, symbol, decimals, and logo, and there is no previous entry for this address on this chain. 
+
+However, independent verification didn't provide any detailed information about the contract at address 0x6f8a06447Ff6FcF75d803135a7de15CE88C1d4ec. This could mean two things - either the token is very new and not yet recognized in online resources, or that it's not legitimate.
+
+As the Kleros ecosystem operates with certainty and requires that information found independently from the internet about the contract address should be available, it is difficult to give a conclusive verdict.
+
+Therefore, given this present scenario, I conclude as INCONCLUSIVE. I invite others to comment on this conclusion for further clarity and direction.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00711bf07b1c731921965bab59cb4c82bdd1f304b43c9ca615707e2954de7b43,Registered,eip155:1:0x69B9C98e8D715C25B330d0D4eB07e68CbB7F6CFC,,,,,"Based on the provided documentation and the submission for the contract, I can affirm the following:
+
+1. The Contract Address is provided as a CAIP-10 address, and it seems to point toward a smart contract, aligning with the requirements of the ""Address Tag” Registry.
+
+2. The Project Name ""Starcatchers"" is clearly stated.
+
+3. The Public Name Tag ""STAR Token"" is unique within the stated project and adheres to the character limit, while only describing the address being tagged as per the policy.
+
+4. The User Interface/Website link provided is direct and leads to the official website of the contract deployer.
+
+5. The Public Note given, ""Contract of Starcatchers's STAR Token,"" is concise, clear, and provides additional information about the contract.
+
+Given that the submission adheres to the provided acceptance policy, and there's no duplicate submission on the chain or any issues with IPFS data pertaining to the entry, it's safe to conclude that the submission is in line with the guidelines and can be accepted. 
+
+Verdict: ACCEPT
+
+I encourage others to share their thoughts or counterarguments on this judgment for a more thorough evaluation.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00a63bb454d937a7cfe1fe27ef82346921fba6d4d2c265e7bb4cb6d6c85964d1,Registered,eip155:1:0x4EBB2384CC1e86F578E37f2057b336B9027cb95a,,,,,"Based on the information provided and the corresponding acceptance policy, I would argue that this submission fulfills the criteria stated in the registry’s policy guidelines.
+
+Looking in detail, we can confirm that:
+
+1. The contract address leads to a deployed contract, and it isn’t an EOA.
+2. The Project Name ('Introducing World App') and Public Name Tag ('WLDAPP Token') present together identify the contract without confusion.
+3. The Public Name Tag is presumably unique within the project, contains less than 50 characters, and only describes the address being tagged.
+4. There's no detected use of markdown, codes, or vague descriptors. 
+5. The given context doesn’t suggest that there is an instance of the same contract deployed on the same chain warranting a differentiation.
+6. There are no grammatical discrepancies, and no competing formatting perspective is provided.
+7. The UI/Website link leads to the relevant product, fitting the requirement— even though a more detailed link could have been provided.
+8. The IPFS data was not mentioned but was not required.
+ 
+However, to conclude properly, it's important to confirm there isn’t a duplicate of the given submission present, appearing at a later block height in the list.
+
+In summary, based on the specified criteria for acceptance, and relying on the submitted and identified information, I would suggest to ACCEPT this submission given no duplicate exists. I invite any disputing opinions or overlooked aspects to be shared.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x00a8f35aa927acbddac9184dd21024dbfb335afc9f1f5eb257165e714b57ba10,Registered,eip155:1:0xF4134146AF2d511Dd5EA8cDB1C4AC88C57D60404,,,,,"Based on the information presented, the entry appears to meet the majority of the requirements outlined in the acceptance policy. The token name, contract address, decimals, and symbol have been correctly provided.
+
+However, there seems to be a discrepancy regarding the contract address' associated information. Independent research indicates that there is no information available related to this particular address, which raises concerns about its validity or, at the very least, its reputation. An accepted entry into the Kleros token registry must be verifiable and reliable.
+
+Additionally, while the logo format is a .png as required and its dimensions exceed the minimal 128x128px stipulation, without being able to actually view the image, we cannot confirm if it adheres to the remaining logo-specific guidelines mentioned in the policy, such as being centered, occupying most of the space, or not including the project or token name. 
+
+In light of the above, without immediate access to further clarifying data, the decision is: INCONCLUSIVE. It is advisable to request further verification related to the contract address and visual confirmation of the logo before making a definitive decision on this entry. I would also encourage additional commentary from others to help draw a more clear-cut conclusion.",INCONCLUSIVE
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x00a9d2045808e91e1ac2948eb3feb3a06706ca7c810b96b25c03eadcaf34e76c,Registered,eip155:1:0x81f8f0bb1cB2A06649E51913A151F0E7Ef6FA321,,,,,"Upon reviewing the submission and the guidelines, I note the following:
+
+1) The name 'VitaDAO' and symbol 'VITA' are clearly stated, meeting the submission requirements for these fields.
+
+2) The contract address 'eip155:1:0x81f8f0bb1cB2A06649E51913A151F0E7Ef6FA321' has been provided, fulfilling the required format.
+
+3) The decimals '18' fall within the customary range for tokens.
+
+However, I have concerns about the logo:
+
+1) Despite the dimensions of the logo not matching the predefined 128x128px, the policy does not strictly demand identical width and height. But, the 231x187 pixels fails to meet the minimum requirement of 128px on all sides. 
+   
+2) From the details provided, I cannot check the logo's quality or visibility at 10cm by 10cm—which suggests possible pixelation or blur, particularly since the logo's original dimensions are smaller than the minimum requirement.
+
+The lack of independently verified information about the contract is a source of concern. The guidelines call for entries to not contain major issues. This aspect cannot be confirmed due to insufficient information.
+
+In light of these shortcomings, while the submission just about meets the minimal criteria, reservations particularly about the logo and independent confirmation necessitate a cautious verdict.
+
+Hence, I invite other Kleros jurors to share their opinions before a final action. As for my proposal, based on the information available and considering the deviations from the guidelines, my preliminary verdict is: INCONCLUSIVE.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00b4a183b1cd550c000126dcd5bbdd820cabf254285c4bdd5afd9a33a279c928,Registered,eip155:1:0x000000000000Ad05Ccc4F10045630fb830B95127,,,,,"In reviewing the acceptance policy and its relation to the submitted data regarding the contract at address eip155:1:0x000000000000Ad05Ccc4F10045630fb830B95127, it becomes evident that the submission meets all the required fields adequately. The contract is recognized as an ERC1967Proxy contract, hence it is not an EOA. The Project Name ""Blur"" and Public Name Tag ""Marketplace 2"" collectively provide a unique identifier for the contract. The website link is valid and refers directly to the relevant project.
+
+However, it's worth noting independently sourced information reveals the contract being a proxy, which behaves as a 'front' for another contract (upgradeable logic). In such cases, the significance is often on the underlying contract, which is potentially upgradeable, rather than the proxy itself. The submitted Public Note does not provide any additional clarity on this matter, nor does it indicate anything about the upgradeability of the contract. 
+
+In light of the above considerations, it is evident that while the submission adheres to the basic requirements of the policy, there exists potential ambiguity regarding the exact contract the listing refers to due to the nature of proxy contracts.
+
+It would be beneficial to seek more input or acknowledgment from the project owners or further explore the underlying contract(s) that the proxy points to, which could help in delivering a more definitive judgment. 
+
+Hence, my current position can only be labelled as INCONCLUSIVE.
+
+I invite further comments on this interpretation and how the nature of proxy contracts could influence the acceptance of the submission under the current guidelines.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00b4fdb5c10ee7310ad94d9951813adf1aa5f5c30918adeaabb5720c2365ed63,Registered,eip155:1:0xE5af63234f93aFD72a8b9114803E33F6d9766956,,,,,"Based on the provided submission:
+
+Contract Address: `eip155:1:0xE5af63234f93aFD72a8b9114803E33F6d9766956`
+Public Name Tag: `fRiENDSiES Token`
+Project Name: `fRiENDSiES`
+UI/Website Link: `https://friendsies.io/`
+Public Note: `Contract of fRiENDSiES's fRiENDSiES Token`
+
+There is no independent information available to validate the contract. However, the submission itself seems to comply with all the guidelines stated in the Kleros “Address Tag” Registry policy. The contract address is provided, the project name and the public name tag appear to be unique and less likely to create any unambiguity. The public note is also descriptive and clear.
+
+Without additional information and given the fact that no earlier submission exists for this address on this chain, I would lean towards acceptance. However, I leave this open for further consideration and invite comments and suggestions from others before a final decision.
+
+Preliminary Verdict: ACCEPT.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00d55a9cb8424002da38b9f511f1b0865a3e442e41547a3bbcb5c8a6123ea672,Registered,eip155:1:0x3a3A65aAb0dd2A17E3F1947bA16138cd37d08c04,,,,,"Given that the contract address provided is accurately formatted and corresponds to a non-EOA (Externally Owned Account), and that the Public Name Tag, Project Name, and UI/Website link are filled in concisely and clearly, the submission appears to meet all the criteria outlined under the Acceptance Criteria section of the registry's guidelines. 
+
+The Public Name Tag 'aETH Token' is unique to the Aave project and represents a clear and commonly-used name that can effectively identify the contract. The Project Name, 'Aave', is correctly displayed in its full form. The provided User Interface / Website Link leads to the official Aave website, however keep in mind that differing URL choices are not a valid reason for rejection according to the policy.
+
+Furthermore, the Public Note is filled in, providing additional comment about the contract ""Contract of Aave's aETH Token"". According to registry guidelines, the fields must not contain markdown or code, and I see none in this submission.
+
+Please note that the information found online about this contract has turned up no results. This, however, does not immediately render the submission invalid according to the registry guidelines. As no information contradicting the submission has been found, the lack of online data does not rule in favor of rejection.
+
+Given that there is no pre-existing entry for this contract address in the registry, this submission seems to fulfill all criteria laid out in the Acceptance Policy. Therefore, unless there is contradicting external information or comments from other members of the Kleros ecosystem, my preliminary recommendation would be to ACCEPT the submission. I encourage others to review and analyze this submission and offer their input before a final decision is made.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x00fb1e43230b026884688d6377a7f8cf88141bec05b11704847a2c84b3fe937b,Registered,eip155:1:0x21BfBDa47A0B4B5b1248c767Ee49F7caA9B23697,,,,,"Upon reviewing the acceptance policy, and cross-verification the submitted details with independent information, I arrive at the following conclusions. 
+
+The Contract Address, Public Name Tag, Project Name, UI/Website Link, and Public Note have all been provided as required by the registry guidelines. The Contract Address points to a deployed contract. The Project Name field, ""OVER"", has been correctly filled in. The combination of the Project Name and the Name Tag uniquely and unambiguously identifies the smart contract — it shows that this is for the ""OVR Token"" of the project ""OVER"". The Public Name Tag, too, adheres to the character limit and describes the tag appropriately. The fields do not contain markdown or code. 
+
+The tag contains clear descriptors and is not dependent on any other tags for understanding. Also, the tag is not misleading, incorrect, or deficient in any standards stipulated in the policy. The provided ""User Interface / Website Link"" refers to the relevant product/brand/website.
+
+Further, a check in the registry's subgraph indicates that there isn't a pre-existing entry for this address on this chain, ruling out any chance of duplication. 
+
+As such, my decision for the acceptance of this entry into the Kleros ""Address Tag"" Registry is ACCEPT. I invite others to provide their valuable comments and insights on this matter.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x010ce6457a79063024b1994ac4d6c1bf6c74b67b9ccc400475c6061914ec17e8,Registered,eip155:56:0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652,,,,,"The entry involves the fields ""Contract Address"", ""Public Name Tag"", ""Project Name"", ""UI/Website Link"", and ""Public Note"". 
+
+I've analyzed these fields in relation to the acceptance criteria outlined in the Kleros “Address Tag” Registry Guidelines.
+
+1. ""Contract Address"": The contract address provided complies with the standard CAIP-10 address format and belongs to an actual smart contract, not a normal wallet. Its validity was confirmed using the appropriate tools.
+
+2. ""Public Name Tag"": The token name ""MasterChef v2"" appears to abide by the rules of being unique within the Project (PancakeSwap) and is within the 50 character limit.
+
+3. ""Project Name"": The project name ""PancakeSwap"" fulfills the requirements set forth in the guidelines.
+
+4. ""UI/Website Link"": The provided link https://pancakeswap.finance/ is relevant and directs to PancakeSwap where the contract pertains.
+
+5. ""Public Note"": The public note ""PancakeSwap's official MasterChef v2 contract"" is succinct and fits within the permitted bounds.
+ 
+The application form satisfies all the necessary conditions mentioned in the criteria. However, the independent search came up empty-handed for this specific contract address. We can proceed if we verify that the information provided is correct, but without outside confirmation, there's an element of risk.
+
+Before reaching a definitive conclusion, I would encourage other members to weigh in with their findings and perspectives. If there's consensus regarding the validity of the information submitted and we can confirm that the contract in question does indeed belong to PancakeSwap, the application should be accepted.
+
+The entry, as it stands, seems to fulfil the acceptance criteria, however, in the light of uncertain verification of the smart contract's purpose, I propose an INCONCLUSIVE status. Further input is warranted.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x012332264e4c4572d49390d4ab67bbf4d4ecf413d1730255ebd648c1b2cc0684,Registered,eip155:1:0x41f20599e9e049004C4d169046eb7023117a6244,,,,,"Upon thorough examination of the provided data in conjunction with the acceptance policy defined in the registry's guidelines, I have the following observations:
+
+1. The Contract Address provided does point to a deployed contract, thus fulfilling the first requirement.
+
+2. The Project Name, 'Gutter Clone', appears to be accurate and correctly identifies the project the contract belongs to.
+
+3. The Public Name Tag, 'CLONE Token', uniquely identifies the smart contract and is associated with the provided project name, as per the guidelines.
+
+4. The provided URL links to a relevant interface where users can interact with the tagged contract.
+
+5. The Public Note gives essential additional information about the contract and does not violate any of the rules stated in the guidelines.
+
+6. The individual who submitted the contract followed all required format conventions and the submission does not appear to be misleading or incorrect. In addition, there is no duplicate tag submission for this address on this chain.
+
+Based on these checks, the tag submission appears to comply with all specified acceptance criteria in the registry guidelines. 
+
+However, it's important to remember that this is an analysis based on the information at hand and others are encouraged to review and comment on the conclusions drawn, to ensure the accuracy of the verdict.
+
+Hence, I conclude that the submission should be ACCEPTed into the registry.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0124986531ae02946cb88f9164d88585991daf7e51a57c2453fafcea48ff380f,Registered,eip155:1:0x6982508145454Ce325dDbE47a25d4ec3d2311933,,,,,"As a lawyer in this ecosystem, my assessment is as follows:
+
+The given submission provides the following data - a contract address, the number of decimals, a logo, and the name and symbol of the token. The logo meets the dimension requirements. The name and symbol of the token seem meaningful and do not appear to be nonsense.
+
+However, independent research hasn't yielded any identifiable or specific information regarding this contract address. This raises a significant concern as the legitimacy of the token contract cannot be confirmed. Without this validation, it is impossible to ascertain if this token contract falls within the guidelines of the Kleros “Tokens” Registry Guidelines.
+
+Furthermore, while the submission is not a duplicate on this chain, the lack of verifiable data about the token contract raises questions about its trustworthiness and authenticity.
+
+Considering these points, I invite others to weigh in on the presented evidence. At this time, based on the acceptance policy and the information available, I lean towards rejecting this entry, however, more data or perspectives could alter this conclusion. 
+
+I hence conclude my assessment with, INCONCLUSIVE.",INCONCLUSIVE
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x01259dece850b1444887b47305e87035761c86f11a1a7194e0ef751ed959e59f,Registered,eip155:56:0xAD29AbB318791D579433D831ed122aFeAf29dcfe,,,,,"Upon careful examination of the submission and given that the token details provided are logical internally, with its basic elements making sense individually and as a whole, I'm inclined to emphasize a few points before coming to a final decision.
+
+First, while the logo's dimensions of 2000 x 2000 surpass the minimum requirement as dictated by the policy, it's important to note that without being able to view its content, we can't make a definitive judgement as to whether it adheres fully to the guidelines.
+
+Second, independent verification of the token's provided contract address revealed no substantial outcomes from online investigation. This lack of supporting evidence can be a potential red flag, albeit not necessarily a disqualifying one, as it could be due to the obscure or new status of the token project.
+
+Third, our search within the ecosystem confirmed that there is no existing entry for this address on this chain, which identifies a fundamental requirement of the registry's policy.
+
+Given these factors, it's not entirely clear whether the submission, as it stands, entirely satisfies the acceptance policy. The investigation primarily tumbles on the non-verification of the contract address and the unknown content of the logo file. Thus, it's crucial to urge detailed commentaries and scrutiny from fellow jurors to foster a more comprehensive evaluation.
+
+As such, my preliminary decision for this particular case is: INCONCLUSIVE.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x013c343a58fdaaccdd26d8c1fbe32f2fa45e0c1c152059fca175be34c4cd6327,Registered,eip155:1:0x9992eC3cF6A55b00978cdDF2b27BC6882d88D1eC,,,,,"Based on the information provided, the submitted entry appears to be in alignment with the registry acceptance policy. The Contract Address is not linked to an externally owned account (EOA), identifies a deployed and verified contract. The 'Project Name', 'Public Name Tag', and 'UI/Website Link' appear to be correct and genuine as per the independent information available on the Internet.
+
+The Public Note provides a brief explanation about the contract as required. I could not find any evidence suggesting conflicts with any criteria outlined in the 'Tag Acceptance Criteria' section of the registry policy.
+
+In absence of any conflicting information or abnormality, I lean towards the acceptance of the entry. However, I invite any parties involved or anyone with additional information to provide their inputs or objections, if any.
+
+Conclusively, given the information at hand, I propose to ACCEPT the entry into the Kleros “Address Tag” Registry.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x015ac887d41d1547773e4cd5405bc501a5d16273dda413afb0dcc43884765654,Registered,eip155:1:0xf29e46887FFAE92f1ff87DfE39713875Da541373,,,,,"Based on the submitted and independently gathered information:
+
+1. The submitted address appears to be in the correct format.
+2. The number of token decimals fits within the usual range.
+3. The logo adheres to the minimum dimensions set out in the policy. Though the actual content of the image is unknown, it's assumed to abide by the regulations.
+4. No existing entry for this address on this chain has been found.
+5. Notably, the independent search yielded no relevant results for the provided contract address, which brings into question the validity of the information submitted.
+
+While the submission meets some parameters of the Kleros Tokens Registry Guidelines, the lack of verifiable online information casts doubt on the overall legitimacy of the proposed token. Unless additional confirming data is made available, a definitive decision cannot be reached at this point. I thereby conclude that the decision on this submission, at this point, should be INCONCLUSIVE. 
+
+I open the floor for any comments or differing perspectives.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0173bd7ef1920efee20a833b33abe994f710bdce1289169e48c5a1a9b5704b15,Registered,eip155:1:0x06aF447c72E18891FB65450f41134C00Cf7Ac28c,,,,,"As per the Kleros ""Address Tag"" Registry guidelines given and the submission details filled, it appears that the Address, Public Name Tag, Project Name, Website Link, and Public Note fields comply with the submission rules.
+
+The contract address in CAIP-10 format points to a deployed smart contract as per guidelines. The submitted Project Name (Sushiverse) and Public Name Tag (SV Token) align with each other uniquely identifying the smart contract. The user interface/website link provided leads to the project, and the public note adds relevant information about the smart contract. Relevant information about the project and token could not be independently verified online, which would usually need to be done to ensure the information is accurate. However, as the policy does not require independent verification and the submission meets all requirement, it can be accepted.
+
+I hereby invite other members of the Kleros community to confirm or challenge my statement on this matter, keeping in mind that we are required to validate or reject submissions based on the Kleros ""Address Tag"" Registry guidelines.
+
+Based on the data given and upon my interpretation, I suggest that the contract should be ACCEPTED.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0180f22ea5d317d3ef0773ebb5d1aee2dd21698d4404782d15356f4d748bb407,Registered,eip155:1:0x37236CD05b34Cc79d3715AF2383E96dd7443dCF1,,,,,"Given the provided information, it appears that the requirements of the Kleros “Address Tag” Registry have been adequately fulfilled. 
+
+The submitted contract address points to a deployed contract associated with the Small Love Potion (SLP) token in the Axie Infinity Project, hence it is not an EOA. The Project Name is correctly identified as 'Axie Infinity'. The Public Name Tag 'SLP V1 Token' is coherent and it is within the 50 characters limit.
+
+The UI/Website link correctly refers to the official website of the Axie Infinity project. As for the Public Note, it briefly comments ""Contract of Axie Infinity's SLP V1 Token"", which is understandable and relevant to the contract.
+
+Having considered the Tag Acceptance Criteria, and the independently gathered evidence, which confirms that there is no already existing entry for this address on this chain, the submitted entry appears to meet the requirements for inclusion into the registry.
+
+Unless there are additional aspects not mentioned or seen at this moment that could bring the submission into question, the current conclusion leans towards acceptance.
+
+Do you concur? Let's discuss if you have any diverging views.
+
+In light of the above, my verdict would be: ACCEPT.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0187e7520c15651395eef8062a4bf48109b238f809a55e7edb143998f22459d2,Registered,eip155:1:0x8eB24319393716668D768dCEC29356ae9CfFe285,,,,,"Given the available information:
+
+- The Contract Address points to a smart contract, as required.
+- The Project Name, SingularityNET, is correctly provided.
+- The Public Name Tag is 'AGI Token', which is unique, less than 50 characters, and refers to the smart contract in question.
+- The UI/Website Link provided is relevant to the project.
+- The Public Note is informative and does not contain any markdown or code.
+  
+However, a key point of consideration here is that the Public Note refers to the token as a 'pre-hardfork version of the AGIX token'. This denotes that there may be an updated version of the contract address. As the rules dictate, there should be a distinguishable difference between instances or versions of the same contract. In this case, the tag for this 'pre-hardfork' version should specify this detail for clarity.
+
+Given the absence of any contradicting information from other sources, I believe the submission mostly adheres to the guidelines. Yet, there's a need to clarify the pre-hardfork state to prevent potential confusion with its successor (AGIX). To maintain clarity, I recommend amending the Name Tag to 'AGI Token (Pre-Hardfork).' After this adjustment, the submission should align well with the ""Kleros Address Tag"" Registry requirements.
+
+This is based on my interpretation of the policy. However, I invite others to critique this analysis and provide alternative views. 
+
+Judging based on the current information, approach, and guidelines, my verdict would be: INCONCLUSIVE until the suggested amendment is made.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x01a44b3f5d9d43a2a129e7df7942a5883ed9c4ecf538893620b80bb17d748b1a,Registered,eip155:1:0xDf3407636bBF3a015a8E48A079ef7bA49E687fD3,,,,,"Based on the submission for the contract:
+
+Contract Address: eip155:1:0xDf3407636bBF3a015a8E48A079ef7bA49E687fD3
+Public Name Tag: GHOST Token
+Project Name: GhostsProject
+UI/Website Link: https://ghostsproject.com/
+Public Note: Contract of GhostsProject's GHOST Token
+
+According to the acceptance policy:
+
+- The field Contract Address points to a deployed contract.
+- The Public Name Tag 'GHOST Token' seems unique and appropriate.
+- The Project name 'GhostsProject' appears applicable.
+- The fields do not contain markdown or code.
+- The tag 'GHOST Token' does not refer to other address tags or other information.
+- The public note 'Contract of GhostsProject's GHOST Token' does not seem misleading.
+- Although I could not find independent information from the internet, after checking the subgraph for this registry, it is established that there is no existing entry for this address on this chain. 
+
+As a lawyer in the Kleros ecosystem, I believe that the information provided for the contract abides strictly by the registry's acceptance policy. However, in the absence of independent confirmatory information from the internet, I invite other participants to weigh in with their inputs about this submission.
+
+Based on the current evidence, my position concludes as INCONCLUSIVE.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x01b8800e623b4baebd8e6b203a72122a5d2b691ba32da68ac8cf3fcbbc6672a2,Registered,eip155:1:0x12e51E77DAAA58aA0E9247db7510Ea4B46F9bEAd,,,,,"Based on the provided submission and registry policy, it seems the submission has followed guidelines accurately, with the exception of one criterion. The policy states: ""The field Contract Address must point to a deployed contract.""
+
+The independently gathered information suggests that there's no smart contract deployed at the given address (0x12e51E77DAAA58aA0E9247db7510Ea4B46F9bEAd). Until evidence of a deployed contract at this address is provided, I would recommend not accepting this entry into the Kleros “Address Tag” Registry.
+
+However, I believe in the principle of hearing different perspectives. I invite other lawyers in our Kleros ecosystem to review this case and contribute their insights. I'm immensely interested in understanding other viewpoints which might alter or confirm my preliminary decision.
+
+Based on currently available information, my judgement is: REJECT.",REJECT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x01cc85cc231ff5d5981abb429df47574c3045d5dcdeebc834f894b2d1a5d23ba,Registered,eip155:1:0x4782093ca50bb5e2E7B1d3fA096dE173605464cb,,,,,"Based on the information provided, it is true that the contract address provided corresponds to that of a contract, not an Externally Owned Account (EOA), thus satisfying the requirement in the registry's acceptance policy.
+
+The Project Name ""Salazar Finance"" and the Public Name Tag ""SZR Token"" together identify the smart contract uniquely and unambiguously. The tag does not contain descriptors that can't be fully understood without referring to other address tags or sources.
+
+Furthermore, no markdown or code is found in the fields. The Public Note provided is a short, mandatory comment about the contract that fits into the public name tag. It thus serves its intended purpose.
+
+The link to the user interface/website (https://salazar.finance/) is appropriate and relates to the relevant product/brand/website.
+
+Despite the lack of abundant information about the contract on the internet, there is nothing in the submission that is grossly incorrect or misleading, and the submission fits within the outlined rules of the registry's acceptance policy.
+
+Given all of this, I propose that the entry be accepted into the registry. I kindly invite others to comment and dispute if they discern any grounds for rejection.
+
+In conclusion: ACCEPT.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x01e5af414f1241668ed775b134bfb3c9fc608eb8378069d6b39a8344abc1a0e3,Registered,eip155:1:0x70A9bea75a3Bfe97B631f53c2bdE9D3E2947eE9E,,,,,"Upon a thorough review of the presented contract information and the curation guidelines, let's first consider the structure of the submission. According to the Kleros ""Address Tag"" Registry guidelines, the submission must contain the CAIP-10 format contract address, a unique and commonly used public name tag, the project name, a URL of the most popular user interface or the official website, and a short public note about the contract. The information submitted verifies these attributes correctly - we have a valid Contract Address, a distinct Public Name Tag, a named Project, a provided UI/Website Link, and a concise Public Note. 
+
+Moreover, the guidelines assert that the information should uniquely and unambiguously identify the smart contract, and the Project Name in combination with the Name Tag appears to fulfil this criterion.
+
+However, we should note that no independent information about the contract could be found from the internet search. This raises a bit of concern about the verifiability of the provided information. Yet, absence of evidence is not necessarily evidence of absence. The unavailability of data might be due to the contract being private, new, or not yet indexed correctly by search engines.
+
+Given the presented data and the guidelines of the Kleros Address Tag registry, and given that there isn't any direct violation, while also noting that independent verification of the provided information is currently missing, I would say the result for this submission is INCONCLUSIVE.
+
+I welcome other Kleros participants to review this analysis and provide their insights or assessments.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x01f9dd7d64b89efd70619927746d11d360bbc44ae66c72278e45a1cdc333b388,Registered,eip155:1:0x686e5ac50D9236A9b7406791256e47feDDB26AbA,,,,,"Based on the provided policy and the provided information, the submission appears to adhere to the guidelines outlined. The submission includes all the necessary fields and does not seem to contain misleading or incorrect information. 
+
+However, it is noteworthy that independent information about the contract could not be located online. The inability to find independent verification does add some risk, but this does not automatically lead to rejection as this may be due to the contract being private or not indexed by search engines yet. 
+
+Therefore, weighing all the factors, I find the evidence INCONCLUSIVE. More evidence is needed to accept or reject this submission with certainty. 
+
+Please share your thoughts and comments as they could provide additional insight and aid in reaching a sound verdict.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0203ab455729761a567d53da51741ec2ddf697ae602a1404f8e524f2a38695cb,Registered,eip155:1:0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e,,,,,"Based on the guidelines laid out in the Kleros “Address Tag” Registry and the submitted contract information, it appears the parameters for acceptable submission are met:
+
+1. The submitted contract address is indeed a contract and not an EOA.
+2. The Project Name ""Ygov.finance"" is clearly associated with the contract.
+3. The combination of Project Name and the Public Name Tag unambiguously identifies the smart contract of interest.
+4. The Public Name Tag ""YFI Token"" is unique and within the character length limit.
+5. The fields do not contain markdown or code.
+6. The tag does not contain descriptors that require reference to another source.
+7. The tag differentiates this version of the contract distinctively.
+8. The provided UI/Website link is directed to the relevant product/brand/website.
+9. The IPFS data are accessible and discoverable throughout the submission period.
+10. The Public Note provides meaningful information about the contract. 
+
+Considering these points, and in the absence of any other information suggesting otherwise or any existing entry for this address on this chain, I suggest that the contract entry adheres to the policies and guidelines of the registry. 
+
+I cordially invite any and all additional commentary or alternative viewpoints on this submission.
+
+Based on the available data, I would say: ACCEPT.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x020f5d8a3c968de33bf3f0c98dfddcd713824bcab2cfd83918178dd316e0117d,Registered,eip155:1:0x608C2feb6B80993B26ffB6fa84F454Ad3Ac38bF0,,,,,"Based on the acceptance policy and the independent information, the submission appears to comply with the necessary requirements. The Contract Address points to a verified smart contract and not a personal wallet. The Project Name, ""Goat Soup"", unambiguously identifies the project related to the contract. The Public Name Tag, ""GSOUP Token"", refers to a unique aspect of the project. The provided link leads to the related website where users can interact with the contract. Finally, the Public Note provides additional, relevant information about the contract.
+
+However, it should be noted that the documentation stipulates that if there is already an entry for the said address on this chain, it should be rejected outright. Based on the provided information, this condition has been satisfied since there is no existing entry for this address on this chain.
+
+I invite anyone with additional insights or interpretations to share their thoughts. 
+
+Based on the given information and my understanding, I suggest the entry should be ACCEPTED.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x021287901f80e68ab053149443102fc5933c889cd636aba664271ea3ea73b35e,Registered,eip155:56:0x42981d0bfbAf196529376EE702F2a9Eb9092fcB5,,,,,"Having examined the available information, it appears a contradiction exists: the submission details claim the token, SafeMoon (SFM), with the address eip155:56:0x42981d0bfbAf196529376EE702F2a9Eb9092fcB5 while the independently found information from the internet does not provide corroboration of the existence of a contract at this same address. In this case, we can't confirm definitively whether the submitted token contract is valid and accurately associated with SafeMoon (SFM).
+
+In the Kleros Tokens Registry Guidelines, it is explicitly stated that ""Contract addresses are an attack vector and should be checked carefully."" Given the conflicting details and the inability to confirm the authenticity of the submitted contract address, it's prudent to exercise caution here.
+
+In relation to the logo, its dimensions of 700x700 pixels adhere to the policy's minimum threshold.
+
+Moreover, as per the information provided, there are no pre-existing entries for this address on this chain, which is in compliance with the Kleros Tokens Registry Guidelines.
+
+However, the lack of confirmable evidence regarding legitimacy of the contract address remains a significant concern. For this reason, at this very moment, it would not be proper to accept the token registration based on the information provided. 
+
+Therefore, I believe the entry should be deemed INCONCLUSIVE until further validation of the contract address is provided. Kleros’ principle is to be certain beyond doubt, and in this case, we are not. 
+
+I invite others to weigh in, particularly if there's any additional information available that may help confirm or disprove the validity of the contract address.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0224a67be4219dbf5e0f6c45aa576cff0edf5824f494c2308be819db9da683d9,Registered,eip155:1:0x10086399DD8c1e3De736724AF52587a2044c9fA2,,,,,"Upon close examination of both the registry's acceptance policy and the submitted information, I can affirm that the submission adheres to the stated guidelines of the policy.
+
+To summarise:
+
+- The contract address is valid and adheres to the CAIP-10 address format.
+- The project name, 'TMTG Project', and the public name tag, 'TMTG Token', are both filled in correctly.
+- The user interface/website link provided is functional and relates directly to the contract.
+- The public note sheds light on the function of the contract.
+
+Moreover, the submitted information appears coherent and I have not encountered any evidence of the information being nonsensical or irrelevant. 
+
+However, if anyone has additional information or counterarguments to the acceptance of this contract into the registry, I invite them to provide their input.
+
+For now, given the current information, I am inclined to: ACCEPT.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x02315286d287dba2be6c2c4981e9f0ecc42f96f85fcd3aa17fa3f80c534dd551,Registered,eip155:1:0x25C65721E26fa5F3c97f129F4e24972482327BC9,,,,,"Based on the provided information and given the acceptance policy, the submission appears to adhere to all the requirements: 
+
+- The contract address points to a smart contract, not a normal wallet (EOA). 
+- The contract is associated with a project, CryptoMutts, which is included in the Project Name field. 
+- The Public Name Tag, ""CMUTT Token"", seems unique within the given project and it's under 50 characters, does not contain markdown or code, and doesn't require the reference of other tags to be understood. Based on the provided data, it is also not ambiguous.
+- The user interface/website link directs to the relevant website for the project. 
+- The public note is a short, clear piece of information about the contract address. 
+
+Moreover, no duplicate tag was found for the same contract address. Despite no independent information found about this contract from Perplexity.ai, the submission seems to strictly follow the guidelines.
+
+There may be further due diligence that should be done upon obtaining more information, like the confirmation of the authenticity of the smart contract or checking the validity of the project. But based on the provided data and guidelines, I would say the entry is ready to be included in the registry.
+
+I vote ACCEPT.
+
+Would anyone like to comment or provide further evidence or observations on my conclusion?",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0241464cecdfa124573181f90e5c8bb15d020d260f8bd9605bdad397be566e90,Registered,eip155:1:0xFca59Cd816aB1eaD66534D82bc21E7515cE441CF,,,,,"From the information provided and taking into account the Kleros 'Tokens' Registry Guidelines provided, a number of conditions should be met for the contract to be accepted into the registry. These conditions include the common use of the name to refer to the asset, the careful check of contract addresses as they are potential attack vectors, and the submission of a token symbol as a transparent PNG of at least 128x128px.
+
+The submission provided fulfills these conditions: The name 'Rarible' is commonly used, the contract address 'eip155:1:0xFca59Cd816aB1eaD66534D82bc21E7515cE441CF' has been provided, and the token symbol 'RARI' is submitted with a logo that fulfills the minimum dimension requirements. These attributes align with the policy guidelines. 
+
+However, independent search doesn't confirm the validity of the contract at the provided address. This inability to validate from independent resources introduces uncertainty into the situation. 
+
+Furthermore, the guidelines call for all IPFS data to be accessible and discoverable throughout the submission period, and it is not explicitly clear if that condition has been met.
+
+In conclusion, while the submission fulfills several of the Kleros 'Tokens' Registry Guidelines conditions, lack of independent validation and unclear status of IPFS data accessibility steer my decision to mark this as INCONCLUSIVE. I invite others to comment on my words.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x02939ab66d02268a2323376637796aa8ead3574bab7990f8d95e366cb8dbb865,Registered,eip155:1:0x011E52E4E40CF9498c79273329E8827b21E2e581,,,,,"Based on the provided information and guidelines, I believe that the tag submission for the given address meets the acceptance criteria required by the Kleros Address Tag Registry.
+
+Here are some key points to note:
+
+1. The information provided paints a clear picture of what this contract does in the context of SushiSwap.
+2. The Contract Address seems legitimate and points to a deployed smart contract, not an EOA wallet.
+3. The Project Name and Public Name Tag unambiguously identifies the smart contract.
+4. The fields provided do not contain Markdown or Code.
+5. The Public Name Tag appears to be unique and aptly describes the tagged address without referring to any other tags or information sources.
+6. The link provided in the UI/Website leads to a relevant webpage that covers SushiSwap.
+
+In conclusion, considering both the Kleros Address Tag Registry guidelines and the independent information found online, I would judge this submission as ACCEPT. However, I invite others to share their views and examine this information to confirm my conclusion.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x029bf89fadff8d814984e1b3e023180a9ff2f6f5ceffa21ac8e49b37adc2d9a7,Registered,eip155:1:0x903560b1CcE601794C584F58898dA8a8b789Fc5d,,,,,"Based on the information provided, it is not possible to independently verify if the submitted token contract address eip155:1:0x903560b1CcE601794C584F58898dA8a8b789Fc5d corresponds to the token ""Cream Keep3rV1"" symbolised as ""crKP3R"". The lack of information available from online sources regarding this specific contract address is of concern.
+
+The Kleros policy emphasizes the importance of in-depth verification of contract addresses due to them being potential attack vectors. Moreover, without independent corroborating evidence from reliable sources, we cannot establish the legitimacy and safe interactions of this token.
+
+Furthermore, the naming and symbol seem intrinsically coherent and abide by the guidelines set out in the Kleros Tokens Registry Guidelines. However, this coherence in itself is not a sufficient condition for acceptance.
+
+In accordance with the submission policy and the information on hand, the decision rendered is INCONCLUSIVE. Further information and investigation are required to make a reliable determination. 
+
+I invite others to express their views and provide additional data that might facilitate a more decisive judgement.",INCONCLUSIVE
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x02af5d695fb3889517f9c95802139fe39fa107111703cb6a7ce844ff31965a89,Registered,eip155:1:0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5,,,,,"Upon reviewing the details of this token contract submission, I can observe the following:
+
+1. The provided contract address is properly formatted according to CAIP-10. 
+
+2. The contract address, eip155:1:0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5, however, does not return any search results from reputable or reliable sources, hence it's impossible to indisputably confirm the authenticity of the token contract address.
+
+3. The logo's size is within the stated parameters from the policy.
+
+4. The token attributes such as name ""Compound Ether"" and symbol ""cETH"" do not appear to be nonsensical.
+
+5. It has also been confirmed that the token does not have any existing entry for this address on this chain.
+
+While the lack of independent evidence concerning the token contract could potentially be a point of concern, there are no major discrepancies from the information submitted and the stated acceptance policy.
+
+Based on this current state of information, and lack of indicators suggesting malicious intent or inaccuracies, it seems reasonable to lean towards a tentative acceptance. However, due to the absence of independently verifiable information about the contract, final and decisive acceptance cannot currently be supported. 
+
+I would like to hear comments from others on these observations.
+
+Therefore, my current recommendation is: INCONCLUSIVE.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x02c77e1fe9530cb0ae73d3aa38f7bf78c7d1d03096ce6ad485d5f6e445837558,Registered,eip155:1:0xff56Cc6b1E6dEd347aA0B7676C85AB0B3D08B0FA,,,,,"After reviewing the acceptance policy and the submitted information, the provided entry appears to align with the guidelines set. The contract address points to a deployed contract, the project name ""Orbs"" is present, and the Public Name Tag ""ORBS Token"" is unique and identifies the smart contract. The user interface link refers to the relevant product, and a public note is provided, which isn't misleading or incorrect.
+
+However, the internet-based search for independent information about this contract did not return any results, which could be due to some mismatches or errors.
+
+INVITE: If anyone has additional validated information about this contract or any aspect not fulfilling the registry guidelines, please contribute.
+
+Based on the provided information, my current stance is ACCEPT. But this is contingent on no new information contradicting its validity.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x02c87ec824f634c343f935b57ec6cfe0d37f505f2838488cfabd18a11aeb987c,Registered,eip155:1:0xEE06A81a695750E71a662B51066F2c74CF4478a0,,,,,"After a careful review of the submission details and acceptance policy, there seems to be no contradiction between the information provided and the guidelines of the registry. The contract address does not appear to have any pre-existing entries on this chain, which fulfills the requirement of absence of duplicates. The logo meets the specified dimensions and format requirements. 
+
+However, the major issue that raises concerns is the lack of dependable information about the specific contract at the given address, based on the independent search results. This makes it difficult to confirm the authenticity and validity of the token contract.
+
+Therefore, due to the uncertainty surrounding the token contract addressed at 0xEE06A81a695750E71a662B51066F2c74CF4478a0, I suggest the need for further investigation. This recommendation is made on the basis that no definitive conclusion about the acceptance of the entry can be drawn without complete information. 
+
+Therefore, my verdict is INCONCLUSIVE. I welcome further comments or inputs on the matter to help reach a more precise conclusion.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x02d90cb7add0898ea4fe01334c422668b40f59988c1c680edb658a78b8986b49,Registered,eip155:56:0x3a6d8cA21D1CF76F653A67577FA0D27453350dD8,,,,,"After reviewing the submitted information and the acceptance policy, there are no apparent contradictions. The entered contract address is in the correct format and the name tags seem to be clear and appropriately describing the smart contract. The project name is provided hence helping to identify the contract.
+
+The only issue observed is the lack of independently found information about the contract address submitted. But since the absence of independent information does not necessarily violate the acceptance policy, it can be considered that the submission is compliant with the rules.
+
+Considering the above, I reach an assumption of acceptability for the registry. However, I'd like to hear others' thoughts on this. 
+
+From my interpretation, I'm leaning towards ACCEPT. Following the principle of I only confirm and convict when absolutely certain, I would very much appreciate it if others could share their thoughts and comments.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x02f90ca636fd70a9bff2e83c46a4cf2376d1e1445ce43dc55949eaf2d7b433e2,Registered,eip155:1:0x4a615bB7166210CCe20E6642a6f8Fb5d4D044496,,,,,"Given the guidelines and the evidence presented, this tag submission appears to meet the criteria outlined by the Kleros ""Address Tag"" Registry. The submitted Contract Address, Project Name and Public Name Tag are appropriately filled in, and the UI/Website Link provided directs to the relevant platform. Moreover, the provided Public Note is informative and concise, offering a clear explanation about the smart contract in question. 
+
+Moreover, there doesn't seem to be any information contradicting the tag submission found online. It must be noted here that the lack of additional, independently found data does not alone serve as a reason to reject the submission, particularly because there is no specific rule in the guidelines that demands external validation. 
+
+With all the given information, I invite the community to validate my analysis as I find the submission suitable for the registry. Therefore, I recommend that we ACCEPT this entry.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x031c739e79232320f8181606ea96f9d6e2f6e5d79da38a5ca449287f80bf1ca5,Registered,eip155:1:0x638a98BBB92a7582d07C52ff407D49664DC8b3Ee,,,,,"Reviewing the submitted information for the address `eip155:1:0x638a98BBB92a7582d07C52ff407D49664DC8b3Ee` and comparing it with the acceptance policy of the Kleros ""Address Tag"" Registry, I would say that it meets all the necessary criteria spelled out in the policy. 
+
+The Contract Address points to an actual deployed contract. The Project Name, ""ParaSpace,"" is also clearly defined. Its Public Name Tag, “Pool Proxy,” is unique, unambiguous, and is less than 50 characters. It does not contain markdown or code, avoiding complexity. Furthermore, the Public Note elaborates the role of the contract, i.e., the ""official Pool Proxy contract of ParaSpace."" 
+
+As specified by the acceptance policy, the submission does not contain descriptors that can't be fully understood without referring to other address tags or sources. Even though the exact purpose of the contract is not detailed, the entry, as it stands, does not seem misleading or incorrect. The provided URL links to the correct product/brand/website in relation to the explained function of the contract.
+
+Lastly, the fact that there are no duplicate tags for this address on this chain also reinforces the case for its inclusion.
+
+Given these reasons, I propose that we ACCEPT this entry into the registry. 
+
+I am open to further comments or considerations regarding this submission.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x033faac408a39853c922ed52afadaab5e5b63ea2a50a47dc6cb604fefa612324,Registered,eip155:1:0x984f7B398d577C0ADDE08293a53aE9D3B6b7a5c5,,,,,"Based on the information provided, the submission appears to be compliant with the acceptance policy of the Kleros ""Address Tag"" Registry.
+
+The submitted contract address, 'eip155:1:0x984f7B398d577C0ADDE08293a53aE9D3B6b7a5c5', has been verified as pointing to a deployed contract and is correctly marked as 'SAC Token' under 'Stoner Ape Club'. The public note is clear and informative. Additionally, the 'UI/Website Link' field leads to a relevant product/brand/website. 
+
+Furthermore, the public name tag is unique within the given project name and does not contain any form of descriptors requiring further information. Its length and content are compliant with the guidelines.
+
+Given these circumstances, where no rules are violated and the provided information seems relevant to the smart contract, the entry can be accepted. 
+
+Therefore, my final verdict is: ACCEPT
+
+I invite others to challenge or discuss my verdict if they find it necessary.",ACCEPT
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x0356e9af98b4e27485929e8992e643f00e157daeefd87ebfcfc91dc4c7599930,Registered,eip155:1:0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF,,,,,"Based on the given information, the entry does comply with the preliminary guidelines such as:
+
+1. The supplied name (Alchemix) adheres to the requirement of being the most commonly used name to denote the asset.
+2. In terms of the contract address, it is assumed that it is correctly submitted, since this is not possible to verify on my end.
+3. The symbol (ALCX) fulfills the requirement of being represented as a transparent PNG image of minimally 128x128px, as the dimensions are stated to be 500x500px. 
+
+However, it is necessary to note that no independent information regarding the validity of the contract address was found from the online search. This raises concerns about the authenticity of the contract. Additionally, the token logo's content was also not visible, which prevents the evaluation of a few more acceptance criteria stated in the policy.
+
+Therefore, due to the lack of crucial information regarding the contract address and the token logo's content, my recommendation for this entry is INCONCLUSIVE. I encourage those involved in the Kleros ecosystem to provide their perspectives on this case.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x03642b181c7623445a9a1d5954388d9e25e7c6bc513ce435d0f460d2fc63fce6,Registered,eip155:1:0x2796317b0fF8538F253012862c06787Adfb8cEb6,,,,,"Given the available information, the submitted entry seemingly follows the guidelines of the Kleros Address Tag Registry, adhering to the criteria set for contract address, public name tag, and project name. Further, a user interface/website link is also provided. However, an independent verification of the contract's address could not yield any corroborating evidence about the contract's existence, purpose, or functionality. 
+
+Assessing the provided data closely, the ""Public Name Tag"" as ""Ethereum Bridge"" could be a valid indication if the contract serves the purpose of bridging assets between Ethereum and the Synapse network. The ""Project Name"" aligns well as ""Synapse"" and is likely linked with the associated website https://synapseprotocol.com/. The ""Public Note"" confirms the contract's purpose as ""Synapse's official Ethereum Bridge contract,"" again providing consistency in the submitted information.
+
+The lack of independent online information might be due to the contract being relatively new or not yet indexed by search engines.
+
+In summary, while the submitted information appears valid and consistent within itself, the lack of independent online validation makes it somewhat unclear. Therefore, given the information at hand and the rules established in the acceptance policy, the final verdict regarding the validity of the entry cannot be conclusively made. An additional review from other members might be necessary for a final decision. 
+
+Verdict: INCONCLUSIVE. 
+
+I invite others to review this case and provide their insight.",INCONCLUSIVE
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x03791b0983ae107ae32e740823f96e12eb57c1f1beb1be51af13e50446b17731,Registered,eip155:1:0x1A5F9352Af8aF974bFC03399e3767DF6370d82e4,,,,,"Based on the provided information, there seem to be two key points of ambiguity that makes accepting or rejecting the entry problematic.
+
+Firstly, the token's name and symbol data provided appear legitimate and match with existing knowledge of a token called Owl (OWL) in the market. However, the guidelines put forth in the acceptance policy mention that the contract addresses should be carefully checked given they are potential attack vectors. We can't be certain the contract address provided is legitimate with the independent information collected which does not provide any specific details about this contract.
+
+Secondly, though the dimension and format of the submitted logo fulfill the requirements, we are unable to confirm its authenticity or relevance given that we can't view its contents.
+
+Furthermore, we miss thorough independent research about the token indicating that it is free of any major issues, especially considering security threats, as underlined in the acceptance policy. The information submitted may not be nonsense, but it also leaves considerable ambiguity.
+
+In conclusion, there is doubt on the validity and legitimacy of the information provided for this token entry, leaving me with the decision to deem the analysis as INCONCLUSIVE. I am open to any further comments or lens to view this case to reconsider this conclusion.",INCONCLUSIVE
+Tokens,0xee1502e29795ef6c2d60f8d7120596abe3bad990,0x037e41107bd874859436af79fd3d5c24732b788aac40d32636f110ff39ff3c61,Registered,eip155:1:0x5845Cd0205b5d43AF695412a79Cf7C1Aeddb060F,,,,,"Upon consideration of the provided information and the acceptance policy of the Kleros ""Tokens"" Registry, the status of the token project ShardingDAO with the symbol SHD is somewhat uncertain. 
+
+The core points to evaluate are as follows: 
+
+1. The name and symbol provided are reasonable and match with the submission's principles and guidelines. 
+
+2. The logo dimensions exceed the minimum size requirements stated by the policy. Although we are unable to evaluate the quality and content of the logo due to lack of visibility, the token submitter asserts its format and dimension. 
+
+3. The contract address given is in the correct format and does not conflict with any existing entries in this chain. 
+
+However, a key concern arises in the absence of actionable information confirming the authenticity of the contract address. This lack of verification significantly inhibits our ability to assess independently whether the token contract is free from any major issues. Given this hurdle, we are unable to confidently deem that this token aligns with the security standards professed in the acceptance policy. Thus, accepting it could potentially compromise the intended safety assurance of the ecosystem.
+
+Considering the aforementioned observations and predicaments, my result is: INCONCLUSIVE
+
+I invite all jurors to scrutinize the detailed observations made and provide your own inputs before pronouncing the final judgment.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0392ac018dd5cdcc0af1533237422573dd9dc30fe0ec18ea53d50c51996c44f3,Registered,eip155:1:0xc40D7b9ca90EAca4A6e067b6ec689fD29f4a8b3C,,,,,"Based on the acceptance policy and independent information, the contract address pointed to by the submission is not an EOA, hence fulfilling the first criteria.
+
+It also correctly represents the project name as ""NEST Protocol"" and the public name tag as unique and unambiguous. The combination ""NEST Protocol: nToken Oracle 3"" details the contract uniquely.
+
+As for the rest of the criteria, the Public Name Tag (""nToken Oracle 3"") does not use markdown or code and is 16 characters long. It does not rely on external sources for understanding and appears to differentiate the contract correctly within the project context.
+
+The UI/Website Link and Public Note align with the contract and do not appear misleading. They offer relevant background information and context.
+
+There is also no existing entry with the same address, preventing duplicate issues. All required information is accessible from the provided IPFS.
+
+Given all these observations align with the acceptance criteria, and given the absence of contradictory evidence, I suggest adding this submission to the registry.
+
+This is my observation based on provided data. I encourage others to provide feedback if they find any discrepancies or have additional insights. 
+
+ACCEPT.",ACCEPT
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x0397622228eb9660eda2e868be9d03ca66545c86a0c0bb8ae73048439e2a9c49,Registered,eip155:1:0x4F8730E0b32B04beaa5757e5aea3aeF970E5B613,,,,,"Considering the evidence presented and the acceptance policy of the Kleros Address Tag Registry, it appears that the tag submission for the contract adheres to the registry's requirements.
+
+The Contract Address, specified under its CAIP-10 address as eip155:1:0x4F8730E0b32B04beaa5757e5aea3aeF970E5B613, points to a valid, deployed smart contract. 
+
+The Project Name, ""Bloot"", correctly identifies the project associated with the contract. 
+
+The Public Name Tag, ""BLOOT Token"", uniquely and unambiguously identifies the contract within the project Bloot. Furthermore, this name adheres to the text requirements specified in the guidelines, including uniqueness, a maximum character length of 50, and absence of markdown and code. 
+
+The User Interface / Website Link provided, https://www.bloot.org/, directs to a pertinent resource related to the contract and project. 
+
+The Public Note, stating ""Contract of Bloot's BLOOT Token"", provides a concise, clear, and informative comment about the contract. 
+
+The submission does not appear to contain incorrect or misleading information and there is no existing entry for this contract address in the registry, which would warrant immediate rejection. 
+
+Considering all these points, the evidence suggests that the tag submission meets the acceptance criteria for this registry. 
+
+I welcome any comments or observations on the matter before giving a final verdict.
+
+ACCCEPT",UNAVAILABLE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x03baa282b564b484e10cc2285e9ee4989ddb7976ccb31c913d209fc9df333c4e,Registered,eip155:1:0x785433d8b06D77D68dF6be63944742130A4530d1,,,,,"Looking at the provided submission and guidelines, it is clear that the submitted Contract Address corresponds to an existing and deployed smart contract, which is one of the primary requirements defined in the guidelines.
+
+The Public Name Tag, ""Fast Gas / Gwei ACOA 1"", is unique, commonly used, and does not contain markdown or code. It appears to clearly describe the function or purpose of the contract, which aligns with the criteria presented in the guidelines under the Field Elements.
+
+The UI/Website Link, ""https://chain.link/"", indeed refers to a relevant product/brand/website, which does not violate any of the stipulations in the tag acceptance criteria.
+
+The Public Note, ""Chainlink's Fast Gas / Gwei ACOA ( Access Controlled Offchain Aggregator) 1 contract"", is informative, clear, and within the guidelines of what's desired for this field. 
+
+However, as the independent research stated, there is no clear information available about the contract at the contract address provided. Given that the acceptance policy states that ""The field Contract Address must point to a deployed contract"", there is no confirmation that this contract indeed belongs to Chainlink as the submitter claims.
+
+There is also no provided information indicating there is already an existing entry for this contract in the registry, or the contrary. 
+
+Given these considerations, the evidence presented is insufficient to conclusively accept the contract into the registry. More information is needed to correlate the contract address with Chainlink and its purported functions as described by the submitter.
+
+To conclude: 
+
+**INCONCLUSIVE** 
+
+I hereby invite other colleagues to offer their insights or provide further evidence that may reinforce or contradict this standpoint.",INCONCLUSIVE
+Tags,0x66260c69d03837016d88c9877e61e08ef74c59f2,0x03d198e221714ea99d91f02b4017c78d66eb4965e9afe9fdaf7c133a7324c69b,Registered,eip155:1:0x7492E30d60D96c58ED0f0DC2FE536098C620C4c0,,,,,"Upon a careful review of the provided information and the Acceptance Policy from the registry, it seems that the submitted entry for the Rainbow Zorb (RAINZORB) token aligns well with the specified rules. 
+
+The Contract Address points to an established contract on the Ethereum blockchain (as an EIP-155 address: eip155:1:0x7492E30d60D96c58ED0f0DC2FE536098C620C4c0), and not a regular wallet, which is an important criteria stated in the policy.
+
+Both the Public Name Tag and Project Name are unique and clearly identify the contract. They also do not include any markdown or code, and neither do they contain descriptors that would require reference to other tags or sources.
+
+The UI/Website link directs to a relevant product page on the Zora exchange, and the Public Note provides further clarity on the project, as it pertains to a special edition Rainbow Zorb icon.
+
+Finally, in line with policy, it was confirmed that no existing entry is present for this address on the respective chain.
+
+Given these observations, I propose that this entry for the Rainbow Zorb (RAINZORB) token should be ACCEPTED into the registry. 
+
+I invite other parties to comment on this evaluation.",ACCEPT
