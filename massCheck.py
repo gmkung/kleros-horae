@@ -51,6 +51,8 @@ for itemData in returnAllResults():
             registryName = "Tokens"
         elif itemData["registryAddress"].lower() == "0x66260c69d03837016d88c9877e61e08ef74c59f2":
             registryName = "Tags"
+        elif itemData["registryAddress"].lower() == "0x957a53a994860be4750810131d9c876b2f52d6e1":
+            registryName = "CDN"
         else:
             raise Exception("Unknown registry: " + itemData["registryAddress"])
 

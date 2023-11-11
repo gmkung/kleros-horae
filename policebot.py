@@ -25,10 +25,11 @@ with open("./ABI/lcurate_abi.json", "r") as f:
 
 tags_contract_address = "0x66260C69d03837016d88c9877e61e08Ef74C59F2"
 tokens_contract_address = "0xeE1502e29795Ef6C2D60F8D7120596abE3baD990"
+cdn_contract_address = "0x957A53A994860BE4750810131d9c876b2f52d6E1"
 # Initialize contracts
 tags_contract = w3.eth.contract(address=tags_contract_address, abi=contract_abi)
-
 tokens_contract = w3.eth.contract(address=tokens_contract_address, abi=contract_abi)
+cdn_contract = w3.eth.contract(address=cdn_contract_address, abi=contract_abi)
 
 
 # Function to cache PDF
@@ -105,6 +106,8 @@ def getSubgraphResults(caip10address, registry_address):
         litems(where:{{key0_ends_with_nocase:"{caip10address.lower()}", registry:"{registry_address.lower()}", status_in:[Registered,ClearingRequested]}}){{
             itemID
             key0
+            key1
+            key2
             status
             latestRequestSubmissionTime
         }}
@@ -141,14 +144,14 @@ def createTagsPrompt(_itemID, data, timeStampToCheckAt):
         print(f"Error fetching curated IPFS object: {e}")
 
     # Analyze with Perplexity.AI
-    perplexity_text_results ='NO RESULTS FROM PERPLEXITY.AI'
+    perplexity_text_results ='No results from Perplexity.ai'
     try:    
-        perplexity = Perplexity()
+        perplexity = Perplexity()   
         response = perplexity.search_sync(  # search_sync returns the final dict while search returns a generator that streams in results
             "Do a thorough search online and tell me what the contract at this address is for? "
             + curatedObject["values"]["Contract Address"].split(":")[-1].strip()
         )
-        print(response);
+        #print(response);
         perplexity_text_results = response["answer"]  # 'response'
 
         perplexity.close()
@@ -160,9 +163,6 @@ def createTagsPrompt(_itemID, data, timeStampToCheckAt):
     existingEntries = getSubgraphResults(
         curatedObject["values"]["Contract Address"], tags_contract_address
     )["data"]["litems"]
-    print(existingEntries)
-
-    # Assuming 'timeStampToCheckAt' is defined and 'tags_contract_address' is defined
 
     # Filter existingEntries with 'latestRequestSubmissionTime' < timeStampToCheckAt
     filteredEntries = [
@@ -204,6 +204,79 @@ def createTagsPrompt(_itemID, data, timeStampToCheckAt):
 
     return OpenAI_prompt
 
+def createCDNPrompt(_itemID, data,timeStampToCheckAt):
+    try:
+        # Fetch JSON from IPFS
+        policyText = extractPDF("/ipfs/QmP3be4kpiNrDx4nV222UsT3sAwi846xNkq4tctTVNJYfJ")
+    except Exception as e:
+        print(f"Error fetching policy from IPFS: {e}")
+    # fetch itemID's data object
+    try:
+        curatedObject = fetch_json("https://ipfs.kleros.io" + data)
+    except Exception as e:
+        print(f"Error fetching curated IPFS object: {e}")
+
+    # Analyze with Perplexity.AI
+    perplexity_text_results ='No results from Perplexity.ai'
+    try:
+        perplexity = Perplexity()
+        response = perplexity.search_sync(  # search_sync returns the final dict while search returns a generator that streams in results
+            "Do a thorough search online and tell me what the contract at this address is for?"
+            + curatedObject["values"]["Contract address"].split(":")[-1].strip()
+        )  # using Address instead of 'Contract Address' due to different field name
+        perplexity_text_results = response["answer"]  # 'response'
+
+        perplexity.close()
+    except Exception as e:
+        print(f"Error searching in perplexity: {e}")
+    # do some parsing with this response
+
+    # Check for duplicates
+    existingEntries = getSubgraphResults(
+        curatedObject["values"]["Contract address"], cdn_contract_address
+    )["data"]["litems"]
+    print(existingEntries)
+    filteredEntries = [
+        entry for entry in existingEntries
+        if entry.get('latestRequestSubmissionTime', float('inf')) < timeStampToCheckAt and entry.get('key1') == curatedObject["values"]["Domain name"]
+    ]
+    
+    try:
+        OpenAI_prompt_text = (
+            "This is the acceptance policy for this registry: \n```"
+            + policyText
+            + "```\n\n"
+            + "Here is the information submitted about this supposed contract: \n```"
+            + object_to_text_lines(curatedObject["values"])
+            + "```\n\n"
+            + "The information found independently from the internet about this supposed token contract: \n```"
+            + perplexity_text_results
+            #+ "```\n\n"
+            #+ "There is an image provided with this prompt, in which the address "+curatedObject["values"]["Contract address"]+ " should be visible in full or truncated form."
+            + "\n\n"
+            + "If there is already an entry for this combination address and domain name on this chain, it should be rejected outright (quote the link in the next sentence in your response). After checking the subgraph for this registry, it is "
+            + str(len(filteredEntries) > 0)
+            + " that there is already an existing entry for this address on this chain"
+            + (
+                (
+                    " and it can be found at https://curate.kleros.io/tcr/100/"
+                    + cdn_contract_address
+                    + "/"
+                    + filteredEntries[0]["itemID"]
+                )
+                if len(filteredEntries) > 0
+                else ""
+            )
+            + "."
+            + "```\n\n"
+            + "Taking into account the image/screenshot provided, the coherence of the information submitted in the entry, their coherence with the acceptance policy and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically and is not nonsense. Keep your responses concise and no more than 200 words. End off your response using the exact strings ACCEPT, REJECT or INCONCLUSIVE."
+        )
+        print(OpenAI_prompt_text)
+        OpenAI_prompt=  [{"type":"text", "text": OpenAI_prompt_text },{"type" : "image_url", "image_url":{"url":"https://ipfs.kleros.io"+curatedObject["values"]["Visual proof"]}}]
+    except Exception as e:
+        print(f"Error creating OpenAI query: {e}")
+
+    return OpenAI_prompt
 
 def createTokensPrompt(_itemID, data,timeStampToCheckAt):
     try:
@@ -291,7 +364,7 @@ def createTokensPrompt(_itemID, data,timeStampToCheckAt):
             )
             + "."
             + "```\n\n"
-            + "Taking into account both the acceptance policy, the image dimensions, and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically and is not nonsense. End off your response using the exact strings #ACCEPT#, #REJECT# or #INCONCLUSIVE#."
+            + "Taking into account both the acceptance policy, the image dimensions, and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically and is not nonsense. End off your response using the exact strings ACCEPT, REJECT or INCONCLUSIVE."
         )
         print(OpenAI_prompt)
     except Exception as e:
@@ -315,23 +388,41 @@ def handle_event(_itemID, data, registryType, timeStampToCheckAt, mode):
     if registryType == "Tags":
         OpenAI_prompt = createTagsPrompt(_itemID, data,timeStampToCheckAt)
     elif registryType == "Tokens":
-        OpenAI_prompt = createTokensPrompt(_itemID, data,timeStampToCheckAt)
+        OpenAI_prompt = createTokensPrompt(_itemID, 
+                                           data,timeStampToCheckAt)
+    elif registryType == "CDN":
+        OpenAI_prompt = createCDNPrompt(_itemID, data,timeStampToCheckAt)
     else:
         return
 
     # Analyze with OpenAI
-    OpenAI_response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a lawyer in the Kleros ecosystem, who only confirms and convicts when you are absolutely certain. You are clear and concise in your communication and likes to invite others to comment on your words.",
-            },
-            {"role": "user", "content": OpenAI_prompt},
-        ],
-    )
+    OpenAI_response={}
+    if (registryType in ["Tokens", "Tags"]):
+        OpenAI_response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a lawyer in the Kleros ecosystem, who only confirms and convicts when you are absolutely certain. You are clear and concise in your communication and likes to invite others to comment on your words.",
+                },
+                {"role": "user", "content": OpenAI_prompt},
+            ],
+        )
+    elif registryType =='CDN':
+        OpenAI_response = openai.ChatCompletion.create(
+            model="gpt-4-vision-preview",
+            max_tokens= 300,
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a lawyer in the Kleros ecosystem, who only confirms and convicts when you are absolutely certain. You are clear and concise in your communication and likes to invite others to comment on your words.",
+                },
+                {"role": "user", "content": OpenAI_prompt}
+            ],
+            
+        )
 
-    print(OpenAI_response["choices"][0]["message"]["content"])
+    
     
     response['openai_commentary'] = OpenAI_response["choices"][0]["message"]["content"]
 
@@ -374,6 +465,15 @@ def handle_event(_itemID, data, registryType, timeStampToCheckAt, mode):
             )
         elif registryType == "Tokens":
             transaction_data = tokens_contract.functions.submitEvidence(
+                _itemID, evidenceIpfsUri
+            ).build_transaction(
+                {
+                    "gas": 2000000,
+                    "nonce": w3.eth.get_transaction_count(w3.eth.defaultAccount),
+                }
+            )
+        elif registryType == "CDN":
+            transaction_data = cdn_contract.functions.submitEvidence(
                 _itemID, evidenceIpfsUri
             ).build_transaction(
                 {

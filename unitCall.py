@@ -2,7 +2,7 @@ from policebot import handle_event
 import requests
 
 itemIDArray = [
-    "0x8ee86511440424b68608f3b5846c1e44626e7d4d7a89d25c53c577eccdb38a53"
+    "0xedfcb5be00659a55ee24c8437b69b02437adede95e59bdbb2f9a5aee6e002af1"
 ]
 
 
@@ -52,6 +52,10 @@ for itemID in itemIDArray:
             itemData["registryAddress"] == "0x66260c69d03837016d88c9877e61e08ef74c59f2"
         ):
             registryName = "Tags"
+        elif (
+            itemData["registryAddress"] == "0x957a53a994860be4750810131d9c876b2f52d6e1"
+        ):
+            registryName = "CDN"
         else:
             raise Exception("Unknown registry: " + itemData["registryAddress"])
         response=handle_event(bytes_object, itemData["data"], registryName,itemData["latestRequestSubmissionTime"],'OFFCHAIN')

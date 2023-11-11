@@ -32,6 +32,7 @@ def query_events_by_date(start_timestamp, end_timestamp):
                 itemID
                 registryAddress
                 data
+                latestRequestSubmissionTime
             }
         }
     """
@@ -59,6 +60,8 @@ if __name__ == "__main__":
     events = query_events_by_date(start_timestamp, end_timestamp)
     if events:
         for event in events:
+            print ("event['itemID'][2:]",event['itemID'][2:])
+            print ("event['itemID']",event['itemID'])
             # Assuming event['itemID'] returns a string that needs to be stripped of '0x' and converted to bytes
             bytes_object = bytes.fromhex(event['itemID'][2:])
             
@@ -67,9 +70,11 @@ if __name__ == "__main__":
                     registryName = "Tokens"
                 elif event["registryAddress"] == "0x66260c69d03837016d88c9877e61e08ef74c59f2":
                     registryName = "Tags"
+                elif event["registryAddress"] == "0x957a53a994860be4750810131d9c876b2f52d6e1":
+                    registryName = "CDN"
                 else:
                     raise Exception("Unknown registry: " + event["registryAddress"])
-                handle_event(bytes_object, event["data"], registryName)  # Assuming handle_event is defined
+                handle_event(bytes_object, event["data"], registryName,event["latestRequestSubmissionTime"],'COMMENT_ONCHAIN')  # Assuming handle_event is defined
             except Exception as e:
                 print(f"Error processing itemID {event['itemID']}: {str(e)}")
     else:
