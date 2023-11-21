@@ -6,8 +6,8 @@ from io import BytesIO
 import os
 import openai
 from perplexity import Perplexity
-import random
 from PIL import Image
+from urllib.parse import urlparse
 
 openai.api_key = os.environ.get("OpenAI_API_Key", "default_value")
 
@@ -94,25 +94,30 @@ def postJSONtoKlerosIPFS(object):
 
 
 def retrieveLogo(ipfs_url):
-    response = requests.get(f"https://ipfs.kleros.io{ipfs_url}")
+    url=f"https://ipfs.kleros.io{ipfs_url}"
+    print("Token image URL", url)
+    try:
+        
+        response = requests.get(url)
+        print("Token retrieval response code",response.status_code)
+        if response.status_code == 200:
+            # Parse the JSON response
+            print("token image retrieval okay")
+            return response
+        else:
+            raise Exception(
+                f"Failed to get proper response on token image from IPFS: {response.status_code}, {response.text}"
+            )
+    except Exception as e:
+        print(f"Error fetching logo image from IPFS: {e}")
+        response=""
+        
+
 
     return response
 
 
-def getSubgraphResults(caip10address, registry_address):
-    # Define the GraphQL query, inserting the key0 and registry_address
-    query = f"""
-    {{
-        litems(where:{{key0_ends_with_nocase:"{caip10address.lower()}", registry:"{registry_address.lower()}", status_in:[Registered,ClearingRequested]}}){{
-            itemID
-            key0
-            key1
-            key2
-            status
-            latestRequestSubmissionTime
-        }}
-    }}
-    """
+def getSubgraphResults(query):
 
     # Define the URL of the GraphQL endpoint
     graphql_url = "https://api.thegraph.com/subgraphs/name/kleros/legacy-curate-xdai"
@@ -160,9 +165,21 @@ def createTagsPrompt(_itemID, data, timeStampToCheckAt):
     # do some parsing with this response
 
     # Check for duplicates
-    existingEntries = getSubgraphResults(
-        curatedObject["values"]["Contract Address"], tags_contract_address
-    )["data"]["litems"]
+    query= f"""
+    {{
+        litems(where:{{key0_starts_with_nocase:"{curatedObject["values"]["Contract Address"].lower()}", registry:"{tags_contract_address.lower()}", status_in:[Registered,ClearingRequested]}}){{
+            itemID
+            key0
+            key1
+            key2
+            key3
+            key4
+            status
+            latestRequestSubmissionTime
+        }}
+    }}
+    """
+    existingEntries = getSubgraphResults(query)["data"]["litems"]
 
     # Filter existingEntries with 'latestRequestSubmissionTime' < timeStampToCheckAt
     filteredEntries = [
@@ -232,14 +249,29 @@ def createCDNPrompt(_itemID, data,timeStampToCheckAt):
     # do some parsing with this response
 
     # Check for duplicates
-    existingEntries = getSubgraphResults(
-        curatedObject["values"]["Contract address"], cdn_contract_address
-    )["data"]["litems"]
+    query= f"""
+    {{
+        litems(where:{{key0_starts_with_nocase:"{curatedObject["values"]["Contract address"].lower()}", registry:"{cdn_contract_address.lower()}", status_in:[Registered,ClearingRequested]}}){{
+            itemID
+            key0
+            key1
+            key2
+            key3
+            key4
+            status
+            latestRequestSubmissionTime
+        }}
+    }}
+    """
+    existingEntries = getSubgraphResults(query)["data"]["litems"]
     print(existingEntries)
     filteredEntries = [
         entry for entry in existingEntries
         if entry.get('latestRequestSubmissionTime', float('inf')) < timeStampToCheckAt and entry.get('key1') == curatedObject["values"]["Domain name"]
     ]
+    
+    final_domain=returnfinaldomain(curatedObject["values"]["Domain name"])
+    print("Final domain", final_domain==curatedObject["values"]["Domain name"])
     
     try:
         OpenAI_prompt_text = (
@@ -254,6 +286,14 @@ def createCDNPrompt(_itemID, data,timeStampToCheckAt):
             #+ "```\n\n"
             #+ "There is an image provided with this prompt, in which the address "+curatedObject["values"]["Contract address"]+ " should be visible in full or truncated form."
             + "\n\n"
+            + (
+                (
+                   "This entry should be rejected as it actually redirects to "+str(final_domain)
+                )
+                if final_domain!=curatedObject["values"]["Domain name"]
+                else ""
+            )
+            +"\n\n"
             + "If there is already an entry for this combination address and domain name on this chain, it should be rejected outright (quote the link in the next sentence in your response). After checking the subgraph for this registry, it is "
             + str(len(filteredEntries) > 0)
             + " that there is already an existing entry for this address on this chain"
@@ -269,6 +309,8 @@ def createCDNPrompt(_itemID, data,timeStampToCheckAt):
             )
             + "."
             + "```\n\n"
+            + "Note that domains with 'www' as a prefix needs to show that exactly in the screenshot."
+            + "```\n\n"
             + "Taking into account the image/screenshot provided, the coherence of the information submitted in the entry, their coherence with the acceptance policy and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically and is not nonsense. Keep your responses concise and no more than 200 words. End off your response using the exact strings ACCEPT, REJECT or INCONCLUSIVE."
         )
         print(OpenAI_prompt_text)
@@ -277,6 +319,25 @@ def createCDNPrompt(_itemID, data,timeStampToCheckAt):
         print(f"Error creating OpenAI query: {e}")
 
     return OpenAI_prompt
+
+def hasTransparency(image):
+    # Convert to RGBA if it is not already
+    if image.mode != 'RGBA':
+        image = image.convert('RGBA')
+
+    # Check for transparency
+    for pixel in image.getdata():
+        if pixel[3] < 255:
+            return True  # Image has transparency
+
+    return False  # Image does not have transparency
+
+def returnfinaldomain(domain):
+    response = requests.get("https://"+domain)
+
+    # Extract the domain after the final redirect
+    final_domain = urlparse(response.url).netloc
+    return final_domain
 
 def createTokensPrompt(_itemID, data,timeStampToCheckAt):
     try:
@@ -293,6 +354,7 @@ def createTokensPrompt(_itemID, data,timeStampToCheckAt):
     try:  # Fetch Logo from IPFS
         logoFile = retrieveLogo(curatedObject["values"]["Logo"])
         image = Image.open(BytesIO(logoFile.content))
+        has_transparency = hasTransparency(image)
         logo_width, logo_height = image.size
         logo_format = image.format.lower()
 
@@ -300,8 +362,9 @@ def createTokensPrompt(_itemID, data,timeStampToCheckAt):
         logo_width = "unknown"
         logo_height = "unknown"
         logo_format = "unknown"
+        has_transparency = False
 
-        print(f"Error fetching policy from IPFS: {e}")
+        print(f"Error logo image from IPFS: {e}")
 
     # Analyze with Perplexity.AI
     perplexity_text_results ='NO RESULTS FROM PERPLEXITY.AI'
@@ -317,18 +380,47 @@ def createTokensPrompt(_itemID, data,timeStampToCheckAt):
     except Exception as e:
         print(f"Error searching in perplexity: {e}")
     # do some parsing with this response
-
+    
     # Check for duplicates
-    existingEntries = getSubgraphResults(
-        curatedObject["values"]["Address"], tokens_contract_address
-    )["data"]["litems"]
+    query= f"""
+    {{ 
+        litems(where:{{key0_starts_with_nocase:"{":".join(curatedObject["values"]["Address"].lower().split(":")[:2])}", registry:"{tokens_contract_address.lower()}", status_in:[Registered,ClearingRequested], key2:"{curatedObject["values"]["Symbol"]}"}}){{
+            itemID
+            key0
+            key1
+            key2
+            key3
+            key4
+            status
+            latestRequestSubmissionTime
+        }}
+        litems2: litems(where:{{key0_starts_with_nocase:"{curatedObject["values"]["Address"].lower()}", registry:"{tokens_contract_address.lower()}", status_in:[Registered,ClearingRequested]}}){{
+            itemID
+            key0
+            key1
+            key2
+            key3
+            key4
+            status
+            latestRequestSubmissionTime
+        }}
+    }}
+    """ #Adding special logic to query on the first parts of the address only to allow for checking of duplicates for the same ticker as well. 
+    
+    # Execute the GraphQL query
+    query_results = getSubgraphResults(query)
+    
+    # Extract the results for 'litems' and 'litems2'
+    litems_results = query_results["data"]["litems"]
+    litems2_results = query_results["data"]["litems2"]
+
+    # Combine the results from both queries into a single list
+    existingEntries = litems_results + litems2_results
 
     filteredEntries = [
         entry for entry in existingEntries
         if entry.get('latestRequestSubmissionTime', float('inf')) < timeStampToCheckAt
     ]
-
-
 
     try:
         OpenAI_prompt = (
@@ -347,7 +439,9 @@ def createTokensPrompt(_itemID, data,timeStampToCheckAt):
             + str(logo_height)
             + " and the format is ."
             + str(logo_format)
-            + " . Verify that both the width and height of the image are greater than the dimensions set out in the policy. The width and height do not have to be the same. Acknowledge that you can't see the contents of the image."
+            + " . Verify that both the width and height of the image are greater than the dimensions set out in the policy. The width and height do not have to be the same. Acknowledge that you can't comment on how the image looks like yet."
+            + "\n\n"
+            + "It is "+str(has_transparency)+" that the image is transparent."
             + "\n\n"
             + "If there is already an entry for this address on this chain, it should be rejected outright. After checking the subgraph for this registry, it is "
             + str(len(filteredEntries) > 0)
@@ -359,10 +453,12 @@ def createTokensPrompt(_itemID, data,timeStampToCheckAt):
                     + "/"
                     + filteredEntries[0]["itemID"]
                 )
-                if len(filteredEntries) > 0
+                if len(filteredEntries) > 0 and filteredEntries[0]["key2"] == curatedObject["values"]["Symbol"] #checking for duplicates on ticker and chain.
                 else ""
             )
             + "."
+            + "```\n\n"
+            + "If the name of the token is not phrased exactly as it is found online (e.g. 'Phala' vs 'Phala Network'), recommend to reject."
             + "```\n\n"
             + "Taking into account both the acceptance policy, the image dimensions, and the information found online (only mention this if actually available above), do you think the entry should be accepted into the registry?  Make sure that the information submitted makes sense intrinsically and is not nonsense. End off your response using the exact strings ACCEPT, REJECT or INCONCLUSIVE."
         )

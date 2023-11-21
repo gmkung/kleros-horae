@@ -3,14 +3,19 @@ import requests
 
 # Modified GraphQL function to retrieve all items
 def returnAllResults():
+    print("Sending query")
     endpoint = "https://api.thegraph.com/subgraphs/name/kleros/legacy-curate-xdai"
     query = """
         query {
-            litems(where:{ registryAddress_in: ["0xee1502e29795ef6c2d60f8d7120596abe3bad990", "0x66260c69d03837016d88c9877e61e08ef74c59f2"] }){
+            litems(skip:10, first:10, where:{ status: Registered, registryAddress_in: ["0xee1502e29795ef6c2d60f8d7120596abe3bad990"] }){
                 itemID  
                 data
                 registryAddress
                 key0
+                key1
+                key2
+                key3
+                key4
                 latestRequestSubmissionTime
                 status
             }
@@ -19,7 +24,7 @@ def returnAllResults():
 
     headers = {"Content-Type": "application/json"}
     response = requests.post(endpoint, json={"query": query}, headers=headers)
-
+    print("query completed")
     if response.ok:
         item_data = response.json()
         return item_data["data"]["litems"]
